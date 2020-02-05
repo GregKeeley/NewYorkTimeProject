@@ -9,6 +9,23 @@
 import UIKit
 
 class SettingsView: UIView {
-
-
+    
+    public var picker: UIPickerView = {
+        let pick = UIPickerView()
+        return pick
+    }()
+    
+    
+    
+    override init(frame: CGRect) {
+        super.init(frame: UIScreen.main.bounds)
+    }
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    private func commonInit() {
+        
+    }
+    
+    
 }
