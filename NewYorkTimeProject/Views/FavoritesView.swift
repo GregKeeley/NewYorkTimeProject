@@ -9,7 +9,7 @@
 import UIKit
 
 class FavoritesView: UIView {
-
+    let name = "jaheed"
 
 
 }
