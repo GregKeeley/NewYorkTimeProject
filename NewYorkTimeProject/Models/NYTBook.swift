@@ -7,3 +7,7 @@
 //
 
 import UIKit
+
+struct NYTimeBook {
+    let book: String
+}
