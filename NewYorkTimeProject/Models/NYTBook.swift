@@ -8,7 +8,5 @@
 
 import UIKit
 
-struct Confilct: Codable {
-    var juanIsLate: Double
-    
+
 }
