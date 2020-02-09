@@ -21,6 +21,7 @@
 		C102CD7E23EB5B6F000C389B /* ImageKit in Frameworks */ = {isa = PBXBuildFile; productRef = C102CD7D23EB5B6F000C389B /* ImageKit */; };
 		C16C225C23F05090008C12AB /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16C225B23F05090008C12AB /* Secrets.swift */; };
 		C16C226423F082A0008C12AB /* NewYorkTimeProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16C226323F082A0008C12AB /* NewYorkTimeProjectTests.swift */; };
+		C16C226C23F08597008C12AB /* NYTCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16C226B23F08597008C12AB /* NYTCategory.swift */; };
 		C172681023EB5745000CD944 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C172680F23EB5745000CD944 /* AppDelegate.swift */; };
 		C172681223EB5745000CD944 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C172681123EB5745000CD944 /* SceneDelegate.swift */; };
 		C172681423EB5745000CD944 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C172681323EB5745000CD944 /* FavoritesViewController.swift */; };
@@ -55,6 +56,7 @@
 		C16C226123F082A0008C12AB /* NewYorkTimeProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewYorkTimeProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C16C226323F082A0008C12AB /* NewYorkTimeProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewYorkTimeProjectTests.swift; sourceTree = "<group>"; };
 		C16C226523F082A0008C12AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C16C226B23F08597008C12AB /* NYTCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTCategory.swift; sourceTree = "<group>"; };
 		C172680C23EB5745000CD944 /* NewYorkTimeProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewYorkTimeProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C172680F23EB5745000CD944 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C172681123EB5745000CD944 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				C102CD7923EB5AFA000C389B /* NYTBook.swift */,
+				C16C226B23F08597008C12AB /* NYTCategory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				C16C225C23F05090008C12AB /* Secrets.swift in Sources */,
 				C102CD7423EB5A88000C389B /* BookCell.swift in Sources */,
 				C172681423EB5745000CD944 /* FavoritesViewController.swift in Sources */,
+				C16C226C23F08597008C12AB /* NYTCategory.swift in Sources */,
 				C102CD7823EB5AE2000C389B /* NYTAPIClient.swift in Sources */,
 				C102CD7223EB5A1C000C389B /* NYTBestSellersViewController.swift in Sources */,
 				C102CD6C23EB59B6000C389B /* SettingsView.swift in Sources */,

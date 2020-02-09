@@ -133,4 +133,48 @@ class NewYorkTimeProjectTests: XCTestCase {
         }
     }
 
+    func testCategoryList() {
+        let jsonData = """
+            {
+                "status": "OK",
+                "copyright": "Copyright (c) 2020 The New York Times Company.  All Rights Reserved.",
+                "num_results": 59,
+                "results": [{
+                    "list_name": "Combined Print and E-Book Fiction",
+                    "display_name": "Combined Print & E-Book Fiction",
+                    "list_name_encoded": "combined-print-and-e-book-fiction",
+                    "oldest_published_date": "2011-02-13",
+                    "newest_published_date": "2020-02-16",
+                    "updated": "WEEKLY"
+                }]
+            }
+        """.data(using: .utf8)!
+        struct NYTCategory: Codable & Equatable {
+            let numResults: Int
+            let results: [CatResults]
+            private enum CodingKeys: String, CodingKey {
+                case numResults = "num_results"
+                case results
+            }
+        }
+        struct CatResults: Codable & Equatable {
+            let listName: String
+            let displayName: String
+            let updated: String
+            private enum CodingKeys: String, CodingKey {
+                case listName = "list_name"
+                case displayName = "display_name"
+                case updated
+            }
+        }
+        let expectedTitle = "Combined Print and E-Book Fiction"
+        do {
+            let nytCat = try JSONDecoder().decode(NYTCategory.self, from: jsonData)
+            let decodedTitle = nytCat.results.first?.listName ?? ""
+            XCTAssertEqual(expectedTitle, decodedTitle)
+        } catch {
+            XCTFail("decoding error: \(error)")
+        }
+    }
+    
 }
