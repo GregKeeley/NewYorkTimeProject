@@ -12,6 +12,10 @@ class SettingsViewController: UIViewController {
 
     private var settingsView = SettingsView()
     
+    var testCategories = ["Business Books", "Paperback Nonfiction", "Hardcover Nonfiction", "Hardcover Fiction", "Mass Market Paperback"]
+    
+    var selectedCategory: String?
+    
     override func loadView() {
         view = settingsView
     }
@@ -24,19 +28,29 @@ class SettingsViewController: UIViewController {
     }
     
     //TODO: add API data for categories
+    
 
 }
-
-extension SettingsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+extension SettingsViewController: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let selected = testCategories[row]
+        selectedCategory = selected
+        //TODO: add UserDefaults to save selected category
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return testCategories[row]
+    }
+}
+extension SettingsViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        //TODO: fix hard coded number
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        //TODO: fix hard coded number --> add data.count
-        return 1
+        
+        return testCategories.count
     }
     
     
 }
+
