@@ -41,6 +41,9 @@ class BookDetailView: UIView {
     }()
     public lazy var buyButtonStack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [amazonButton, appleBooksButton, barnesNobelButton, localStoreButton])
+        stack.axis = .vertical
+        stack.distribution = .fillEqually
+        stack.spacing = 5
         return stack
     }()
     public lazy var amazonButton: UIButton = {
