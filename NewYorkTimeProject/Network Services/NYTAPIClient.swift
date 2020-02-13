@@ -7,4 +7,49 @@
 //
 
 import Foundation
+import NetworkHelper
 
+struct NYTAPIClient {
+    private func getCategories(completion: @escaping (Result<NYTCategory, AppError>) -> ()) {
+        let endpoint = ""
+        guard let url = URL(string: endpoint) else {
+            completion(.failure(.badURL(endpoint)))
+            return
+        }
+        let request = URLRequest(url: url)
+        NetworkHelper.shared.performDataTask(with: request) { (results) in
+            switch results {
+            case .failure(let appError):
+                completion(.failure(.networkClientError(appError)))
+            case .success(let categoryData):
+                do {
+                    let categories = try JSONDecoder().decode(NYTCategory.self, from: categoryData)
+                    completion(.success(categories))
+                } catch {
+                    completion(.failure(.decodingError(error)))
+                }
+            }
+        }
+    }
+    private func getBooks(category: NYTCategory, completion: @escaping (Result<NYTimeBook, AppError>) -> ()) {
+        let endpoint = "https://api.nytimes.com/svc/books/v3/lists/current/business books.json?api-key=(key)"
+        guard let url = URL(string: endpoint) else {
+            completion(.failure(.badURL(endpoint)))
+            return
+        }
+        let request = URLRequest(url: url)
+        NetworkHelper.shared.performDataTask(with: request) { (results) in
+            switch results {
+            case .failure(let appError):
+                completion(.failure(.networkClientError(appError)))
+            case .success(let bookData):
+                do {
+                    let books = try JSONDecoder().decode(NYTimeBook.self, from: bookData)
+                    completion(.success(books))
+                } catch {
+                    completion(.failure(.decodingError(error)))
+                }
+            }
+        }
+    }
+}
