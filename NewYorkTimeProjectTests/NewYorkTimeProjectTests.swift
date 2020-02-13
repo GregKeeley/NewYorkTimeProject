@@ -105,14 +105,14 @@ class NewYorkTimeProjectTests: XCTestCase {
         }
         struct Books: Codable & Equatable {
             let rank: Int
-            let primaaryISBN13: String
+            let primaryISBN13: String
             let title: String
             let author: String
             let bookImage: String // URL for book image
             let buyLinks: [BuyLinks]
             private enum CodingKeys: String, CodingKey {
                 case rank
-                case primaaryISBN13 = "primary_isbn13"
+                case primaryISBN13 = "primary_isbn13"
                 case title
                 case author
                 case bookImage = "book_image"
