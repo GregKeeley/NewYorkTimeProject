@@ -19,6 +19,9 @@
 		C102CD7823EB5AE2000C389B /* NYTAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C102CD7723EB5AE2000C389B /* NYTAPIClient.swift */; };
 		C102CD7A23EB5AFA000C389B /* NYTBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = C102CD7923EB5AFA000C389B /* NYTBook.swift */; };
 		C102CD7E23EB5B6F000C389B /* ImageKit in Frameworks */ = {isa = PBXBuildFile; productRef = C102CD7D23EB5B6F000C389B /* ImageKit */; };
+		C16C225C23F05090008C12AB /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16C225B23F05090008C12AB /* Secrets.swift */; };
+		C16C226423F082A0008C12AB /* NewYorkTimeProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16C226323F082A0008C12AB /* NewYorkTimeProjectTests.swift */; };
+		C16C226C23F08597008C12AB /* NYTCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16C226B23F08597008C12AB /* NYTCategory.swift */; };
 		C172681023EB5745000CD944 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C172680F23EB5745000CD944 /* AppDelegate.swift */; };
 		C172681223EB5745000CD944 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C172681123EB5745000CD944 /* SceneDelegate.swift */; };
 		C172681423EB5745000CD944 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C172681323EB5745000CD944 /* FavoritesViewController.swift */; };
@@ -26,6 +29,16 @@
 		C172681C23EB574B000CD944 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C172681A23EB574B000CD944 /* LaunchScreen.storyboard */; };
 		C172682923EB587E000CD944 /* NYTTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C172682823EB587E000CD944 /* NYTTabBarController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C16C226623F082A0008C12AB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C172680423EB5745000CD944 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C172680B23EB5745000CD944;
+			remoteInfo = NewYorkTimeProject;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		C102CD6523EB5980000C389B /* NYTBestSellersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTBestSellersView.swift; sourceTree = "<group>"; };
@@ -39,6 +52,11 @@
 		C102CD7523EB5A95000C389B /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		C102CD7723EB5AE2000C389B /* NYTAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTAPIClient.swift; sourceTree = "<group>"; };
 		C102CD7923EB5AFA000C389B /* NYTBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTBook.swift; sourceTree = "<group>"; };
+		C16C225B23F05090008C12AB /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		C16C226123F082A0008C12AB /* NewYorkTimeProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewYorkTimeProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C16C226323F082A0008C12AB /* NewYorkTimeProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewYorkTimeProjectTests.swift; sourceTree = "<group>"; };
+		C16C226523F082A0008C12AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C16C226B23F08597008C12AB /* NYTCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTCategory.swift; sourceTree = "<group>"; };
 		C172680C23EB5745000CD944 /* NewYorkTimeProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewYorkTimeProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C172680F23EB5745000CD944 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C172681123EB5745000CD944 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +68,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C16C225E23F082A0008C12AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C172680923EB5745000CD944 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -70,10 +95,28 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		C16C225A23F05084008C12AB /* Secrets */ = {
+			isa = PBXGroup;
+			children = (
+				C16C225B23F05090008C12AB /* Secrets.swift */,
+			);
+			path = Secrets;
+			sourceTree = "<group>";
+		};
+		C16C226223F082A0008C12AB /* NewYorkTimeProjectTests */ = {
+			isa = PBXGroup;
+			children = (
+				C16C226323F082A0008C12AB /* NewYorkTimeProjectTests.swift */,
+				C16C226523F082A0008C12AB /* Info.plist */,
+			);
+			path = NewYorkTimeProjectTests;
+			sourceTree = "<group>";
+		};
 		C172680323EB5745000CD944 = {
 			isa = PBXGroup;
 			children = (
 				C172680E23EB5745000CD944 /* NewYorkTimeProject */,
+				C16C226223F082A0008C12AB /* NewYorkTimeProjectTests */,
 				C172680D23EB5745000CD944 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -82,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				C172680C23EB5745000CD944 /* NewYorkTimeProject.app */,
+				C16C226123F082A0008C12AB /* NewYorkTimeProjectTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -89,6 +133,7 @@
 		C172680E23EB5745000CD944 /* NewYorkTimeProject */ = {
 			isa = PBXGroup;
 			children = (
+				C16C225A23F05084008C12AB /* Secrets */,
 				C172682723EB57BC000CD944 /* Supporting Files */,
 				C172682623EB57B5000CD944 /* Controllers */,
 				C102CD7B23EB5B19000C389B /* Cells */,
@@ -114,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				C102CD7923EB5AFA000C389B /* NYTBook.swift */,
+				C16C226B23F08597008C12AB /* NYTCategory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -153,6 +199,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C16C226023F082A0008C12AB /* NewYorkTimeProjectTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C16C226823F082A0008C12AB /* Build configuration list for PBXNativeTarget "NewYorkTimeProjectTests" */;
+			buildPhases = (
+				C16C225D23F082A0008C12AB /* Sources */,
+				C16C225E23F082A0008C12AB /* Frameworks */,
+				C16C225F23F082A0008C12AB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C16C226723F082A0008C12AB /* PBXTargetDependency */,
+			);
+			name = NewYorkTimeProjectTests;
+			productName = NewYorkTimeProjectTests;
+			productReference = C16C226123F082A0008C12AB /* NewYorkTimeProjectTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C172680B23EB5745000CD944 /* NewYorkTimeProject */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C172682023EB574B000CD944 /* Build configuration list for PBXNativeTarget "NewYorkTimeProject" */;
@@ -183,6 +247,10 @@
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Gregory Keeley";
 				TargetAttributes = {
+					C16C226023F082A0008C12AB = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = C172680B23EB5745000CD944;
+					};
 					C172680B23EB5745000CD944 = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
@@ -205,11 +273,19 @@
 			projectRoot = "";
 			targets = (
 				C172680B23EB5745000CD944 /* NewYorkTimeProject */,
+				C16C226023F082A0008C12AB /* NewYorkTimeProjectTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C16C225F23F082A0008C12AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C172680A23EB5745000CD944 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -222,13 +298,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C16C225D23F082A0008C12AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C16C226423F082A0008C12AB /* NewYorkTimeProjectTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C172680823EB5745000CD944 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C102CD7623EB5A95000C389B /* FavoriteCell.swift in Sources */,
+				C16C225C23F05090008C12AB /* Secrets.swift in Sources */,
 				C102CD7423EB5A88000C389B /* BookCell.swift in Sources */,
 				C172681423EB5745000CD944 /* FavoritesViewController.swift in Sources */,
+				C16C226C23F08597008C12AB /* NYTCategory.swift in Sources */,
 				C102CD7823EB5AE2000C389B /* NYTAPIClient.swift in Sources */,
 				C102CD7223EB5A1C000C389B /* NYTBestSellersViewController.swift in Sources */,
 				C102CD6C23EB59B6000C389B /* SettingsView.swift in Sources */,
@@ -246,6 +332,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		C16C226723F082A0008C12AB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C172680B23EB5745000CD944 /* NewYorkTimeProject */;
+			targetProxy = C16C226623F082A0008C12AB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		C172681A23EB574B000CD944 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -258,6 +352,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C16C226923F082A0008C12AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 26RHXP32FH;
+				INFOPLIST_FILE = NewYorkTimeProjectTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.gregkeeley.NewYorkTimeProjectTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NewYorkTimeProject.app/NewYorkTimeProject";
+			};
+			name = Debug;
+		};
+		C16C226A23F082A0008C12AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 26RHXP32FH;
+				INFOPLIST_FILE = NewYorkTimeProjectTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.gregkeeley.NewYorkTimeProjectTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NewYorkTimeProject.app/NewYorkTimeProject";
+			};
+			name = Release;
+		};
 		C172681E23EB574B000CD944 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -411,6 +545,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C16C226823F082A0008C12AB /* Build configuration list for PBXNativeTarget "NewYorkTimeProjectTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C16C226923F082A0008C12AB /* Debug */,
+				C16C226A23F082A0008C12AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C172680723EB5745000CD944 /* Build configuration list for PBXProject "NewYorkTimeProject" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
