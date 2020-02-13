@@ -24,7 +24,7 @@ class BookDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavBar()
-        
+        updateUI()
     }
     
     private func updateUI() {

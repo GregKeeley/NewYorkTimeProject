@@ -32,10 +32,8 @@ class SettingsView: UIView {
         picker.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            picker.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
-            picker.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            picker.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            picker.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20)
+            picker.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
+            picker.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor)
         ])
     }
     

@@ -12,9 +12,11 @@ class SettingsViewController: UIViewController {
 
     private var settingsView = SettingsView()
     
-    var testCategories = ["Business Books", "Paperback Nonfiction", "Hardcover Nonfiction", "Hardcover Fiction", "Mass Market Paperback"]
+    private var testCategories = ["Business Books", "Paperback Nonfiction", "Hardcover Nonfiction", "Hardcover Fiction", "Mass Market Paperback"]
     
-    var selectedCategory: String?
+    private var selectedCategory: String?
+    
+    private var bookCategories = [CatResults]()
     
     override func loadView() {
         view = settingsView
