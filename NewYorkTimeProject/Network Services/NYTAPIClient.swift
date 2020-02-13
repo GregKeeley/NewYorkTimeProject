@@ -10,8 +10,8 @@ import Foundation
 import NetworkHelper
 
 struct NYTAPIClient {
-    private func getCategories(completion: @escaping (Result<NYTCategory, AppError>) -> ()) {
-        let endpoint = ""
+    static func getCategories(completion: @escaping (Result<NYTCategory, AppError>) -> ()) {
+        let endpoint = "https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=\(NYTAPIKey.nytKey)"
         guard let url = URL(string: endpoint) else {
             completion(.failure(.badURL(endpoint)))
             return
@@ -31,8 +31,9 @@ struct NYTAPIClient {
             }
         }
     }
-    private func getBooks(category: NYTCategory, completion: @escaping (Result<NYTimeBook, AppError>) -> ()) {
-        let endpoint = "https://api.nytimes.com/svc/books/v3/lists/current/business books.json?api-key=(key)"
+    static func getBooks(category: NYTCategory, completion: @escaping (Result<NYTimeBook, AppError>) -> ()) {
+        let categoryFixed = category.results.first?.listName.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? "Hardcover%Nonfiction"
+        let endpoint = "https://api.nytimes.com/svc/books/v3/lists/current/\(categoryFixed).json?api-key=\(NYTAPIKey.nytKey)"
         guard let url = URL(string: endpoint) else {
             completion(.failure(.badURL(endpoint)))
             return

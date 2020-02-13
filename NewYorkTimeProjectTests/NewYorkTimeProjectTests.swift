@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import NetworkHelper
 @testable import NewYorkTimeProject
 
 class NewYorkTimeProjectTests: XCTestCase {
@@ -176,5 +177,5 @@ class NewYorkTimeProjectTests: XCTestCase {
             XCTFail("decoding error: \(error)")
         }
     }
-    
+ 
 }

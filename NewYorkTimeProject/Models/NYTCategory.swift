@@ -10,13 +10,13 @@ import Foundation
 
 struct NYTCategory: Codable & Equatable {
     let numResults: Int
-    let results: [CatResults]
+    let results: [CategoryResults]
     private enum CodingKeys: String, CodingKey {
         case numResults = "num_results"
         case results
     }
 }
-struct CatResults: Codable & Equatable {
+struct CategoryResults: Codable & Equatable {
     let listName: String
     let displayName: String
     let updated: String
