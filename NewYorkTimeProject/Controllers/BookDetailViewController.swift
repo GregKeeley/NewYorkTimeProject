@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import DataPersistence
 
 class BookDetailViewController: UIViewController {
 
     private var bookDetailView = BookDetailView()
+    
+    private var dataPersistence: DataPersistence<Books>!
+    
+    private var book: Books?
     
     override func loadView() {
         view = bookDetailView
