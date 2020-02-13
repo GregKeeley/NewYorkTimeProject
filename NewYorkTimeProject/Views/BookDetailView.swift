@@ -27,12 +27,7 @@ class BookDetailView: UIView {
         label.font = UIFont.systemFont(ofSize: 18)
         return label
     }()
-    public lazy var publisherLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 18)
-        return label
-    }()
+
     public lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -89,7 +84,6 @@ class BookDetailView: UIView {
         buttonStackConstraints()
         titleLabelConstraints()
         authorLabelConstraints()
-        publisherLabelConstraints()
         descriptionLabelConstraints()
     }
     
@@ -124,7 +118,6 @@ class BookDetailView: UIView {
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10)
         ])
     }
-    
     private func authorLabelConstraints() {
         addSubview(authorLabel)
         authorLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -135,22 +128,12 @@ class BookDetailView: UIView {
             authorLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10)
         ])
     }
-    private func publisherLabelConstraints() {
-        addSubview(publisherLabel)
-        publisherLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            publisherLabel.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 8),
-            publisherLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            publisherLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10)
-        ])
-    }
     private func descriptionLabelConstraints() {
         addSubview(descriptionLabel)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: publisherLabel.bottomAnchor, constant: 10),
+            descriptionLabel.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 10),
             descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10)
         ])

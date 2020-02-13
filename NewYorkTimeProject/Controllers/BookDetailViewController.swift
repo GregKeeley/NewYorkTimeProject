@@ -27,6 +27,13 @@ class BookDetailViewController: UIViewController {
         
     }
     
+    private func updateUI() {
+        bookDetailView.authorLabel.text = book?.author
+        bookDetailView.descriptionLabel.text = "Greg needs to add this"
+        bookDetailView.titleLabel.text = book?.title
+        
+    }
+    
     private func configureNavBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(favoritesButtonPressed(_:)))
     }
