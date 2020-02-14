@@ -31,8 +31,8 @@ struct NYTAPIClient {
             }
         }
     }
-    static func getBooks(category: NYTCategory, completion: @escaping (Result<NYTimeBook, AppError>) -> ()) {
-        let categoryFixed = category.results.first?.listName.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? "Hardcover%Nonfiction"
+    static func getBooks(category: String, completion: @escaping (Result<NYTimeBook, AppError>) -> ()) {
+        let categoryFixed = category.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? "Hardcover%Nonfiction"
         let endpoint = "https://api.nytimes.com/svc/books/v3/lists/current/\(categoryFixed).json?api-key=\(NYTAPIKey.nytKey)"
         guard let url = URL(string: endpoint) else {
             completion(.failure(.badURL(endpoint)))
