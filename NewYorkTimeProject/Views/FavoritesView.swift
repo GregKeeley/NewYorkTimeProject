@@ -9,6 +9,8 @@ import UIKit
 
 class FavoritesView: UIView {
     
+//    weak var delegate: FavoritesDelegate?
+    
     public lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize.init(width: 250, height: 250)
@@ -18,7 +20,6 @@ class FavoritesView: UIView {
         collectionView.backgroundColor = #colorLiteral(red: 0.9633663297, green: 0.8417919278, blue: 0.7775592804, alpha: 1)
         return collectionView
     }()
-    
     
     
     override init(frame: CGRect) {
