@@ -52,9 +52,21 @@ class BookDetailViewController: UIViewController {
     
     @objc private func favoritesButtonPressed(_ sender: UIBarButtonItem){
         sender.image = UIImage(systemName: "heart.fill")
+        
+        //TODO: add showalert
         print("added to favorites")
         
-        //TODO: Add data persistence to save book to favorites
+        guard let book = book else {
+            return
+        }
+        
+        do {
+            try dataPersistence.createItem(book)
+            //TODO: add delegate
+        } catch {
+            //TODO: add show alert
+            print("could not save item \(error)")
+        }
     }
 
     
