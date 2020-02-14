@@ -87,8 +87,8 @@ extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
         // programmatic segue
         let favBook = favoriteBook[indexPath.row]
         let detailVC = BookDetailViewController()
-        //detailVC. = favoriteBook
-        //detailVC.dataPersistance = dataPersistance
+        detailVC.book = favBook
+        detailVC.dataPersistence = dataPersistance
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
