@@ -34,7 +34,7 @@ class FavoriteCell: UICollectionViewCell {
     lazy var weeksLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont(name: "AmericanTypewriter-CondensedBold", size: 17.0)
+        label.font = UIFont(name: "AmericanTypewriter-CondensedBold", size: 20.0)
         label.text = "Number of Weeks"
         return label
     }()
@@ -42,6 +42,8 @@ class FavoriteCell: UICollectionViewCell {
    lazy var favTextView: UITextView = {
     let textView = UITextView()
     textView.backgroundColor = .white
+    textView.text = "Book Detail Text"
+    textView.font = UIFont(name: "AmericanTypewriter", size: 15)
     textView.isEditable = false
     return textView
     }()
