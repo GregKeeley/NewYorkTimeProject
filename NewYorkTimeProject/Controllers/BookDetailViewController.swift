@@ -9,14 +9,18 @@
 import UIKit
 import DataPersistence
 import ImageKit
+import SafariServices
+
 
 class BookDetailViewController: UIViewController {
-
+    
     private var bookDetailView = BookDetailView()
     
-    private var dataPersistence: DataPersistence<Books>!
+    public var dataPersistence: DataPersistence<Books>!
     
-    private var book: Books?
+    private weak var delegate: FavoritesDelegate?
+    
+    public var book: Books?
     
     override func loadView() {
         view = bookDetailView
@@ -45,6 +49,12 @@ class BookDetailViewController: UIViewController {
             }
         }
     }
+    private func configureButtons() {
+        bookDetailView.amazonButton.addTarget(bookDetailView.amazonButton, action: #selector(amazonButtonPressed(_:)), for: .touchUpInside)
+        bookDetailView.appleBooksButton.addTarget(bookDetailView.appleBooksButton, action: #selector(appleBooksButtonPressed(_:)), for: .touchUpInside)
+        bookDetailView.barnesNobelButton.addTarget(bookDetailView.barnesNobelButton, action: #selector(barnesNobelButtonPressed(_:)), for: .touchUpInside)
+        bookDetailView.localStoreButton.addTarget(bookDetailView.localStoreButton, action: #selector(localButtonPressed(_:)), for: .touchUpInside)
+    }
     
     private func configureNavBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(favoritesButtonPressed(_:)))
@@ -57,15 +67,68 @@ class BookDetailViewController: UIViewController {
             return
         }
         showAlert(title: "♥️", message: "\(book.title) was added to your favorites")
+        delegate?.didSaveBook(book: book)
         
         do {
             try dataPersistence.createItem(book)
-            //TODO: add delegate
         } catch {
             showAlert(title: "Oops", message: "could not save to your favorites \(error)")
         }
     }
-
     
-
+    @objc private func amazonButtonPressed(_ sender: UIButton) {
+        print("take user to amazon page")
+        guard let book = book else {
+            return
+        }
+        let amazon = book.buyLinks[0]
+        
+        guard let url = URL(string: amazon.url) else {
+            return
+        }
+        let safariPage = SFSafariViewController(url: url)
+        present(safariPage, animated: true)
+    }
+    
+    @objc private func appleBooksButtonPressed(_ sender: UIButton) {
+        print("take user to apple books page")
+        guard let book = book else {
+            return
+        }
+        let appleBooks = book.buyLinks[1]
+        
+        guard let url = URL(string: appleBooks.url) else {
+            return
+        }
+        let safariPage = SFSafariViewController(url: url)
+        present(safariPage, animated: true)
+    }
+    @objc private func barnesNobelButtonPressed(_ sender: UIButton) {
+        print("take user to barnes & nobel page")
+        guard let book = book else {
+            return
+        }
+        let barnesNobel = book.buyLinks[2]
+        
+        guard let url = URL(string: barnesNobel.url) else {
+            return
+        }
+        let safariPage = SFSafariViewController(url: url)
+        present(safariPage, animated: true)
+    }
+    @objc private func localButtonPressed(_ sender: UIButton) {
+        print("take user to local bookstore page")
+        guard let book = book else {
+            return
+        }
+        let localBS = book.buyLinks[3]
+        
+        guard let url = URL(string: localBS.url) else {
+            return
+        }
+        let safariPage = SFSafariViewController(url: url)
+        present(safariPage, animated: true)
+    }
+    
+    
 }

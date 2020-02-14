@@ -10,6 +10,8 @@ import UIKit
 
 class BookDetailView: UIView {
     
+    private var currentBook: Books?
+    
     public lazy var bookImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -44,28 +46,28 @@ class BookDetailView: UIView {
     public lazy var amazonButton: UIButton = {
         let button = UIButton()
         //TODO: update button with an image logo
-        button.addTarget(self, action: #selector(amazonButtonPressed(_:)), for: .touchUpInside)
+        //button.addTarget(self, action: #selector(amazonButtonPressed(_:)), for: .touchUpInside)
         button.setTitle("Amazon", for: .normal)
         return button
     }()
     public lazy var appleBooksButton: UIButton = {
         let button = UIButton()
         //TODO: update button with an image logo
-        button.addTarget(self, action: #selector(appleBooksButtonPressed(_:)), for: .touchUpInside)
+        //button.addTarget(self, action: #selector(appleBooksButtonPressed(_:)), for: .touchUpInside)
         button.setTitle("Apple Books", for: .normal)
         return button
     }()
     public lazy var barnesNobelButton: UIButton = {
         let button = UIButton()
         //TODO: update button with an image logo
-        button.addTarget(self, action: #selector(barnesNobelButtonPressed(_:)), for: .touchUpInside)
+        //button.addTarget(self, action: #selector(barnesNobelButtonPressed(_:)), for: .touchUpInside)
         button.setTitle("Barnes & Nobel", for: .normal)
         return button
     }()
     public lazy var localStoreButton: UIButton = {
         let button = UIButton()
         //TODO: update button with an image logo
-        button.addTarget(self, action: #selector(localButtonPressed(_:)), for: .touchUpInside)
+        //button.addTarget(self, action: #selector(localButtonPressed(_:)), for: .touchUpInside)
         button.setTitle("Local Bookstores", for: .normal)
         return button
     }()
@@ -138,21 +140,5 @@ class BookDetailView: UIView {
             descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10)
         ])
     }
-    
-    
 }
-extension BookDetailView {
-    //TODO: add actual functions
-    @objc private func amazonButtonPressed(_ sender: UIButton) {
-        print("take user to amazon page")
-    }
-    @objc private func appleBooksButtonPressed(_ sender: UIButton) {
-        print("take user to apple books page")
-    }
-    @objc private func barnesNobelButtonPressed(_ sender: UIButton) {
-        print("take user to barnes & nobel page")
-    }
-    @objc private func localButtonPressed(_ sender: UIButton) {
-        print("take user to local bookstore page")
-    }
-}
+
