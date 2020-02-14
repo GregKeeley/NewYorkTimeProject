@@ -38,6 +38,7 @@ struct Results: Codable & Equatable {
 struct Books: Codable & Equatable {
     
     let rank: Int
+    let weeksOnList: Int
     let primaryISBN13: String
     let description: String?
     let title: String
@@ -47,6 +48,7 @@ struct Books: Codable & Equatable {
     
     private enum CodingKeys: String, CodingKey {
         case rank
+        case weeksOnList = "weeks_on_list"
         case primaryISBN13 = "primary_isbn13"
         case description
         case title
