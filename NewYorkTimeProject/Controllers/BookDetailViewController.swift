@@ -33,8 +33,9 @@ class BookDetailViewController: UIViewController {
     }
     
     private func updateUI() {
+        bookDetailView.backgroundColor = .white
         bookDetailView.authorLabel.text = book?.author
-        bookDetailView.descriptionLabel.text = "Greg needs to add this"
+        bookDetailView.descriptionLabel.text = book?.description
         bookDetailView.titleLabel.text = book?.title
         bookDetailView.bookImage.getImage(with: book?.bookImage ?? "") { [weak self] (result) in
             switch result {

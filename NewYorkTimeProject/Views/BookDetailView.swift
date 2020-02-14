@@ -20,12 +20,15 @@ class BookDetailView: UIView {
     public lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.numberOfLines = 0
+
         label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()
     public lazy var authorLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 18)
         return label
     }()
@@ -33,6 +36,8 @@ class BookDetailView: UIView {
     public lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.numberOfLines = 0
+
         label.font = UIFont.systemFont(ofSize: 18)
         return label
     }()
@@ -45,29 +50,21 @@ class BookDetailView: UIView {
     }()
     public lazy var amazonButton: UIButton = {
         let button = UIButton()
-        //TODO: update button with an image logo
-        //button.addTarget(self, action: #selector(amazonButtonPressed(_:)), for: .touchUpInside)
         button.setTitle("Amazon", for: .normal)
         return button
     }()
     public lazy var appleBooksButton: UIButton = {
         let button = UIButton()
-        //TODO: update button with an image logo
-        //button.addTarget(self, action: #selector(appleBooksButtonPressed(_:)), for: .touchUpInside)
         button.setTitle("Apple Books", for: .normal)
         return button
     }()
     public lazy var barnesNobelButton: UIButton = {
         let button = UIButton()
-        //TODO: update button with an image logo
-        //button.addTarget(self, action: #selector(barnesNobelButtonPressed(_:)), for: .touchUpInside)
         button.setTitle("Barnes & Nobel", for: .normal)
         return button
     }()
     public lazy var localStoreButton: UIButton = {
         let button = UIButton()
-        //TODO: update button with an image logo
-        //button.addTarget(self, action: #selector(localButtonPressed(_:)), for: .touchUpInside)
         button.setTitle("Local Bookstores", for: .normal)
         return button
     }()
@@ -95,9 +92,10 @@ class BookDetailView: UIView {
         
         NSLayoutConstraint.activate([
             bookImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            bookImage.trailingAnchor.constraint(equalTo: trailingAnchor),
-            bookImage.leadingAnchor.constraint(equalTo: leadingAnchor),
-            bookImage.heightAnchor.constraint(equalToConstant: 300)
+            bookImage.centerXAnchor.constraint(equalTo: centerXAnchor),
+            bookImage.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 3),
+            
+//            bookImage.leadingAnchor.constraint(equalTo: leadingAnchor)
         ])
     }
     private func buttonStackConstraints() {
@@ -105,9 +103,11 @@ class BookDetailView: UIView {
         buyButtonStack.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            buyButtonStack.topAnchor.constraint(equalTo: bookImage.topAnchor, constant: 8),
-            buyButtonStack.leadingAnchor.constraint(equalTo: bookImage.trailingAnchor, constant: 8),
-            buyButtonStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
+            buyButtonStack.topAnchor.constraint(equalTo: bookImage.topAnchor),
+            buyButtonStack.leadingAnchor.constraint(equalTo: bookImage.trailingAnchor, constant: 8)
+//            buyButtonStack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
+//            buyButtonStack.leadingAnchor.constraint(equalTo: bookImage.trailingAnchor, constant: 8),
+//            buyButtonStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
         ])
     }
     private func titleLabelConstraints() {
@@ -115,7 +115,7 @@ class BookDetailView: UIView {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            safeAreaLayoutGuide.topAnchor.constraint(equalTo: bookImage.bottomAnchor, constant: 10),
+            titleLabel.topAnchor.constraint(equalTo: bookImage.bottomAnchor, constant: 10),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10)
         ])
