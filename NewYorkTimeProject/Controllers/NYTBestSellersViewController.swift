@@ -10,6 +10,8 @@ import UIKit
 
 class NYTBestSellersViewController: UIViewController {
     
+    private var detailViewController = BookDetailViewController()
+    
     var defaultSelection: String = "manga"   {
         didSet  {
             navigationItem.title = defaultSelection
@@ -31,7 +33,6 @@ class NYTBestSellersViewController: UIViewController {
             DispatchQueue.main.async {
                 self.bestsellerView.bestSellerCollectionView.reloadData()
             }
-            
         }
     }
     
@@ -44,6 +45,7 @@ class NYTBestSellersViewController: UIViewController {
         view.backgroundColor = .white
         loadPickerView()
         bestsellerView.bestSellerCollectionView.dataSource = self
+        bestsellerView.bestSellerCollectionView.delegate = self
         bestsellerView.genrePickerView.dataSource = self
         bestsellerView.genrePickerView.delegate = self
         loadBooks(category: "manga")
@@ -51,11 +53,9 @@ class NYTBestSellersViewController: UIViewController {
     
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(true)
-            
+            getCategory()
         }
-    
-    //UserDefaults.Standard.
-    
+        
     private func loadPickerView()   {
         NYTAPIClient.getCategories { [weak self] (result) in
             switch result {
@@ -91,7 +91,6 @@ class NYTBestSellersViewController: UIViewController {
             loadBooks(category: defaultSelection)
         }
         
-        
     }
     
 }
@@ -110,6 +109,14 @@ extension NYTBestSellersViewController: UICollectionViewDataSource  {
     
 }
 
+extension NYTBestSellersViewController: UICollectionViewDelegate    {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let book = books[indexPath.row]
+        detailViewController.book = book
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
+}
+
 extension NYTBestSellersViewController: UIPickerViewDataSource  {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -125,7 +132,6 @@ extension NYTBestSellersViewController: UIPickerViewDelegate    {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let selected = bookCategories[row]
         loadBooks(category: selected)
-        //let selected = pickerView.selectedRow(inComponent: 0)
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
