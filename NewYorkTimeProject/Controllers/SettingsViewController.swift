@@ -8,39 +8,51 @@
 
 import UIKit
 
+//TODO: refactor to tab bar later
+public enum UserPreferenceKey: String {
+    case selectedCatergory = "Category"
+}
+
 class SettingsViewController: UIViewController {
 
     private var settingsView = SettingsView()
     
-    private var testCategories = ["Business Books", "Paperback Nonfiction", "Hardcover Nonfiction", "Hardcover Fiction", "Mass Market Paperback"]
-    
     private var selectedCategory: String?
     
-    private var bookCategories = [CatResults]()
+    private var bookCategories = [String]()
     
     override func loadView() {
         view = settingsView
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = .white
         settingsView.picker.delegate = self
         settingsView.picker.dataSource = self
+        loadCategories()
     }
     
-    //TODO: add API data for categories
+    private func loadCategories() {
+        NYTAPIClient.getCategories { [weak self] (result) in
+            switch result {
+            case .failure(let appError):
+                self?.showAlert(title: "could not populate data", message: "\(appError)")
+            case .success(let catergories):
+                self?.bookCategories = catergories.results.map{$0.displayName}
+            }
+        }
+    }
     
 
 }
 extension SettingsViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let selected = testCategories[row]
+        let selected = bookCategories[row]
         selectedCategory = selected
-        //TODO: add UserDefaults to save selected category
+        UserDefaults.standard.set(selected, forKey: UserPreferenceKey.selectedCatergory.rawValue)
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return testCategories[row]
+        return bookCategories[row]
     }
 }
 extension SettingsViewController: UIPickerViewDataSource {
@@ -49,8 +61,7 @@ extension SettingsViewController: UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
-        return testCategories.count
+        return bookCategories.count
     }
     
     
