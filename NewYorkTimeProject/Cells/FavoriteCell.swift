@@ -8,10 +8,15 @@
 
 import UIKit
 
+protocol FavoriteBookDelegate: AnyObject {
+    func didSelectMoreButton(_ favBookCell: FavoriteCell, book: Books)
+}
 
 class FavoriteCell: UICollectionViewCell {
-        
-    var selectedBook: Books!
+    
+    private var currentFav: Books!
+    
+    weak var delegate: FavoriteBookDelegate?
     
     lazy var bookImage: UIImageView = {
         let image = UIImageView()
@@ -20,13 +25,16 @@ class FavoriteCell: UICollectionViewCell {
     
     lazy var optionButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "ellipsis.circle"), for: .normal)
+        button.setBackgroundImage(.actions, for: .normal)
+        button.tintColor = .black
+        button.backgroundColor = .white
         return button
     }()
     
     lazy var weeksLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.font = UIFont(name: "AmericanTypewriter-CondensedBold", size: 17.0)
         label.text = "Number of Weeks"
         return label
     }()
@@ -87,4 +95,18 @@ class FavoriteCell: UICollectionViewCell {
         ])
     }
     
+    private func favTexViewConstraints() {
+        addSubview(favTextView)
+        favTextView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            favTextView.topAnchor.constraint(equalTo: weeksLabel.bottomAnchor, constant: 10),
+            favTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            favTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 10)
+        ])
+    }
+    
+    public func configureCell(for favBook: Books) {
+        currentFav = favBook // associating the cell with its Book
+    }
 }
