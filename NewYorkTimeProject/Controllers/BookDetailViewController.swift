@@ -16,11 +16,11 @@ class BookDetailViewController: UIViewController {
     
     private var bookDetailView = BookDetailView()
     
-    private var dataPersistence: DataPersistence<Books>!
+    public var dataPersistence: DataPersistence<Books>!
     
     private weak var delegate: FavoritesDelegate?
     
-    private var book: Books?
+    public var book: Books?
     
     override func loadView() {
         view = bookDetailView
