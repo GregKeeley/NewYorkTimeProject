@@ -16,6 +16,8 @@ class BookDetailViewController: UIViewController {
     
     private var dataPersistence: DataPersistence<Books>!
     
+    private weak var delegate: FavoritesDelegate?
+    
     private var book: Books?
     
     override func loadView() {
@@ -57,10 +59,10 @@ class BookDetailViewController: UIViewController {
             return
         }
         showAlert(title: "♥️", message: "\(book.title) was added to your favorites")
+        delegate?.didSaveBook(book: book)
         
         do {
             try dataPersistence.createItem(book)
-            //TODO: add delegate
         } catch {
             showAlert(title: "Oops", message: "could not save to your favorites \(error)")
         }
