@@ -38,7 +38,7 @@ class SettingsViewController: UIViewController {
             case .failure(let appError):
                 self?.showAlert(title: "could not populate data", message: "\(appError)")
             case .success(let catergories):
-                self?.bookCategories = catergories.results.map{$0.displayName}
+                self?.bookCategories = catergories.results.map{$0.listName}
             }
         }
     }
