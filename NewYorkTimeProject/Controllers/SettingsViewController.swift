@@ -36,8 +36,7 @@ class SettingsViewController: UIViewController {
         NYTAPIClient.getCategories { [weak self] (result) in
             switch result {
             case .failure(let appError):
-                //TODO: add a show alert
-                print("error getting catergories data \(appError)")
+                self?.showAlert(title: "could not populate data", message: "\(appError)")
             case .success(let catergories):
                 self?.bookCategories = catergories.results.map{$0.displayName}
             }

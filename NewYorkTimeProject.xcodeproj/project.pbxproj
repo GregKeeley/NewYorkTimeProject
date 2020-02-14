@@ -28,6 +28,8 @@
 		C172681923EB574B000CD944 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C172681823EB574B000CD944 /* Assets.xcassets */; };
 		C172681C23EB574B000CD944 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C172681A23EB574B000CD944 /* LaunchScreen.storyboard */; };
 		C172682923EB587E000CD944 /* NYTTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C172682823EB587E000CD944 /* NYTTabBarController.swift */; };
+		C6400EF323F7040D00FE38F1 /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6400EF223F7040D00FE38F1 /* ShowAlert.swift */; };
+		C6400EF623F7045E00FE38F1 /* CustomDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6400EF523F7045E00FE38F1 /* CustomDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 		C172681B23EB574B000CD944 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C172681D23EB574B000CD944 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C172682823EB587E000CD944 /* NYTTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTTabBarController.swift; sourceTree = "<group>"; };
+		C6400EF223F7040D00FE38F1 /* ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlert.swift; sourceTree = "<group>"; };
+		C6400EF523F7045E00FE38F1 /* CustomDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +139,7 @@
 			children = (
 				C16C225A23F05084008C12AB /* Secrets */,
 				C172682723EB57BC000CD944 /* Supporting Files */,
+				C6400EF423F7043A00FE38F1 /* Custom Delegate */,
 				C172682623EB57B5000CD944 /* Controllers */,
 				C102CD7B23EB5B19000C389B /* Cells */,
 				C172682523EB57AB000CD944 /* Views */,
@@ -192,8 +197,17 @@
 			children = (
 				C172680F23EB5745000CD944 /* AppDelegate.swift */,
 				C172681123EB5745000CD944 /* SceneDelegate.swift */,
+				C6400EF223F7040D00FE38F1 /* ShowAlert.swift */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C6400EF423F7043A00FE38F1 /* Custom Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				C6400EF523F7045E00FE38F1 /* CustomDelegate.swift */,
+			);
+			path = "Custom Delegate";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,9 +334,11 @@
 				C102CD6C23EB59B6000C389B /* SettingsView.swift in Sources */,
 				C172681023EB5745000CD944 /* AppDelegate.swift in Sources */,
 				C102CD7023EB59F4000C389B /* SettingsViewController.swift in Sources */,
+				C6400EF623F7045E00FE38F1 /* CustomDelegate.swift in Sources */,
 				C102CD6823EB5997000C389B /* FavoritesView.swift in Sources */,
 				C172681223EB5745000CD944 /* SceneDelegate.swift in Sources */,
 				C102CD7A23EB5AFA000C389B /* NYTBook.swift in Sources */,
+				C6400EF323F7040D00FE38F1 /* ShowAlert.swift in Sources */,
 				C102CD6E23EB59E5000C389B /* BookDetailViewController.swift in Sources */,
 				C172682923EB587E000CD944 /* NYTTabBarController.swift in Sources */,
 				C102CD6623EB5980000C389B /* NYTBestSellersView.swift in Sources */,
