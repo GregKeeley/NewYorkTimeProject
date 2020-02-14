@@ -10,6 +10,8 @@ import UIKit
 
 class BookDetailView: UIView {
     
+    private var currentBook: Books?
+    
     public lazy var bookImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -138,13 +140,20 @@ class BookDetailView: UIView {
             descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10)
         ])
     }
-    
-    
 }
 extension BookDetailView {
     //TODO: add actual functions
     @objc private func amazonButtonPressed(_ sender: UIButton) {
         print("take user to amazon page")
+//        guard let book = currentBook else {
+//            return
+//        }
+//        guard let url = URL(string: book.buyLinks.first?.url ?? "") else {
+//            return
+//        }
+//        let safariPage = SafariViewController(url: url)
+//
+        
     }
     @objc private func appleBooksButtonPressed(_ sender: UIButton) {
         print("take user to apple books page")
