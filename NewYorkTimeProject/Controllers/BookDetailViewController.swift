@@ -8,6 +8,7 @@
 
 import UIKit
 import DataPersistence
+import ImageKit
 
 class BookDetailViewController: UIViewController {
 
@@ -31,7 +32,18 @@ class BookDetailViewController: UIViewController {
         bookDetailView.authorLabel.text = book?.author
         bookDetailView.descriptionLabel.text = "Greg needs to add this"
         bookDetailView.titleLabel.text = book?.title
-        
+        bookDetailView.bookImage.getImage(with: book?.bookImage ?? "") { [weak self] (result) in
+            switch result {
+            case .failure:
+                DispatchQueue.main.async {
+                    self?.bookDetailView.bookImage.image = UIImage(systemName: "book")
+                }
+            case .success(let image):
+                DispatchQueue.main.async {
+                    self?.bookDetailView.bookImage.image = image
+                }
+            }
+        }
     }
     
     private func configureNavBar() {
@@ -41,6 +53,7 @@ class BookDetailViewController: UIViewController {
     @objc private func favoritesButtonPressed(_ sender: UIBarButtonItem){
         sender.image = UIImage(systemName: "heart.fill")
         print("added to favorites")
+        
         //TODO: Add data persistence to save book to favorites
     }
 
