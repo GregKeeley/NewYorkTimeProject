@@ -120,11 +120,19 @@ extension NYTBestSellersViewController: UICollectionViewDataSource  {
     
 }
 
-extension NYTBestSellersViewController: UICollectionViewDelegate    {
+extension NYTBestSellersViewController: UICollectionViewDelegateFlowLayout   {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let book = books[indexPath.row]
         let detailViewController = BookDetailViewController(dataPersistence, book: book)
         navigationController?.pushViewController(detailViewController, animated: true)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemSpacing: CGFloat = 0.1
+        let maxWidth = UIScreen.main.bounds.size.width
+        let numberOfItems: CGFloat = 1
+        let totalSpace: CGFloat = numberOfItems * itemSpacing
+        let itemWidth: CGFloat = (maxWidth - totalSpace) / numberOfItems
+        return CGSize(width: itemWidth, height: itemWidth/1.5)
     }
 }
 

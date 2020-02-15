@@ -95,7 +95,6 @@ class BookDetailView: UIView {
             bookImage.centerXAnchor.constraint(equalTo: centerXAnchor),
             bookImage.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 3),
             
-//            bookImage.leadingAnchor.constraint(equalTo: leadingAnchor)
         ])
     }
     private func buttonStackConstraints() {
