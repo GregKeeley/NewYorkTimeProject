@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import DataPersistence
 
 class NYTBestSellersViewController: UIViewController {
     
-    private var detailViewController = BookDetailViewController()
-    
-    var defaultSelection: String = "manga"   {
+    private var dataPersistence: DataPersistence<Books>
+        
+    var defaultSelection: String = "manga" {
         didSet  {
             navigationItem.title = defaultSelection
         }
@@ -36,6 +37,15 @@ class NYTBestSellersViewController: UIViewController {
         }
     }
     
+    init(_ dataPersistence: DataPersistence<Books>) {
+        self.dataPersistence = dataPersistence
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func loadView() {
         view = bestsellerView
     }
@@ -49,6 +59,7 @@ class NYTBestSellersViewController: UIViewController {
         bestsellerView.genrePickerView.dataSource = self
         bestsellerView.genrePickerView.delegate = self
         loadBooks(category: "manga")
+        bestsellerView.bestSellerCollectionView.register(BookCell.self, forCellWithReuseIdentifier: "bookCell")
     }
     
         override func viewWillAppear(_ animated: Bool) {
@@ -109,11 +120,19 @@ extension NYTBestSellersViewController: UICollectionViewDataSource  {
     
 }
 
-extension NYTBestSellersViewController: UICollectionViewDelegate    {
+extension NYTBestSellersViewController: UICollectionViewDelegateFlowLayout   {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let book = books[indexPath.row]
-        detailViewController.book = book
+        let detailViewController = BookDetailViewController(dataPersistence, book: book)
         navigationController?.pushViewController(detailViewController, animated: true)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemSpacing: CGFloat = 0.1
+        let maxWidth = UIScreen.main.bounds.size.width
+        let numberOfItems: CGFloat = 1
+        let totalSpace: CGFloat = numberOfItems * itemSpacing
+        let itemWidth: CGFloat = (maxWidth - totalSpace) / numberOfItems
+        return CGSize(width: itemWidth, height: itemWidth/1.5)
     }
 }
 

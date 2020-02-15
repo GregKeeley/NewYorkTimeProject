@@ -15,7 +15,7 @@ class FavoritesViewController: UIViewController {
     
     private weak var delegate: FavoriteBookDelegate?
     
-    public var dataPersistance: DataPersistence<Books>!
+    public var dataPersistance: DataPersistence<Books>
     
     private var favoriteBook = [Books]() {
         
@@ -29,7 +29,15 @@ class FavoritesViewController: UIViewController {
         }
     }
     
+    init(_ dataPersistence: DataPersistence<Books>) {
+        self.dataPersistance = dataPersistence
+        super.init(nibName: nil, bundle: nil)
+        self.dataPersistance.delegate = self
+    }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     
     override func viewDidLoad() {
@@ -86,9 +94,7 @@ extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // programmatic segue
         let favBook = favoriteBook[indexPath.row]
-        let detailVC = BookDetailViewController()
-        detailVC.book = favBook
-        detailVC.dataPersistence = dataPersistance
+        let detailVC = BookDetailViewController(dataPersistance, book: favBook)
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }

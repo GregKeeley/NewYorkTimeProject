@@ -9,7 +9,6 @@
 import UIKit
 
 class BookCell: UICollectionViewCell {
-    private lazy var bookReuseIdentifier = "bookCell"
     
     public lazy var bookImageView: UIImageView =    {
         let imageView = UIImageView()
@@ -22,22 +21,22 @@ class BookCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "test label"
         label.textAlignment = .center
+        label.numberOfLines = 2
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
     
-    public lazy var descriptionTextView: UITextView =   {
-        let textView = UITextView()
+    public lazy var descriptionTextView: UILabel =   {
+        let textView = UILabel()
         textView.text = "test textview"
         textView.textAlignment = .center
-        textView.isEditable = false
-        textView.isSelectable = false
+        textView.numberOfLines = 1
         return textView
     }()
     
     public func configureCell(for book: Books)    {
         self.titleLabel.text = book.title
-        self.descriptionTextView.text = book.description
+        self.descriptionTextView.text = "\(book.weeksOnList) weeks on Best Sellers List"
         self.bookImageView.getImage(with: book.bookImage) { (result) in
             switch result   {
             case .failure(let appError):
@@ -61,25 +60,10 @@ class BookCell: UICollectionViewCell {
         commonInit()
     }
     
-    private func commonInit()   {
-        setupBookImageViewConstraints()
+    private func commonInit() {
         setupTitleLabelConstraints()
+        setupBookImageViewConstraints()
         setupDescriptionTextViewConstraints()
-    }
-    
-    private func setupBookImageViewConstraints()   {
-        
-        addSubview(bookImageView)
-        bookImageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            
-            bookImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            bookImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            bookImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.7),
-            bookImageView.widthAnchor.constraint(equalTo: heightAnchor, multiplier: 4/5)
-            
-        ])
-        
     }
     
     private func setupTitleLabelConstraints()   {
@@ -87,24 +71,35 @@ class BookCell: UICollectionViewCell {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             
-            titleLabel.topAnchor.constraint(equalTo: bookImageView.bottomAnchor, constant: 8),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 1),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50)
             
         ])
         
     }
-    
+    private func setupBookImageViewConstraints()   {
+        
+        addSubview(bookImageView)
+        bookImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            
+            bookImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
+            bookImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            bookImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.8),
+            bookImageView.widthAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3)
+        ])
+        
+    }
     private func setupDescriptionTextViewConstraints()  {
         addSubview(descriptionTextView)
         descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             
-            descriptionTextView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
+            descriptionTextView.topAnchor.constraint(equalTo: bookImageView.bottomAnchor, constant: 8),
             descriptionTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             descriptionTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
             descriptionTextView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2),
-            //descriptionTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8)
             
         ])
     }

@@ -13,7 +13,6 @@ class NYTBestSellersView: UIView {
     public lazy var bestSellerCollectionView: UICollectionView =    {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 200, height: 200)
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.register(BookCell.self, forCellWithReuseIdentifier: "bookCell")
         collectionView.backgroundColor = .systemTeal
@@ -49,7 +48,7 @@ class NYTBestSellersView: UIView {
             bestSellerCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
             bestSellerCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             bestSellerCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            bestSellerCollectionView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.35)
+            bestSellerCollectionView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.45)
         ])
     }
     
@@ -58,7 +57,7 @@ class NYTBestSellersView: UIView {
         genrePickerView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            genrePickerView.topAnchor.constraint(equalTo: bestSellerCollectionView.bottomAnchor, constant: 8),
+            genrePickerView.topAnchor.constraint(equalTo: bestSellerCollectionView.bottomAnchor),
             genrePickerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             genrePickerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             genrePickerView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20)
