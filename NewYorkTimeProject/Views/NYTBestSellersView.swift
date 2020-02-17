@@ -15,7 +15,7 @@ class NYTBestSellersView: UIView {
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.register(BookCell.self, forCellWithReuseIdentifier: "bookCell")
-        collectionView.backgroundColor = .systemTeal
+        collectionView.backgroundColor = .systemOrange
         return collectionView
     }()
     
@@ -48,7 +48,7 @@ class NYTBestSellersView: UIView {
             bestSellerCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
             bestSellerCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             bestSellerCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            bestSellerCollectionView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.45)
+            bestSellerCollectionView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4)
         ])
     }
     

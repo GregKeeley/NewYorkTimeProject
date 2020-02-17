@@ -13,11 +13,7 @@ class NYTBestSellersViewController: UIViewController {
     
     private var dataPersistence: DataPersistence<Books>
         
-    var defaultSelection: String = "manga" {
-        didSet  {
-            navigationItem.title = defaultSelection
-        }
-    }
+    var defaultSelection: String = "manga"
     
     let bestsellerView = NYTBestSellersView()
     
@@ -25,6 +21,7 @@ class NYTBestSellersViewController: UIViewController {
         didSet{
             DispatchQueue.main.async {
                 self.bestsellerView.genrePickerView.reloadAllComponents()
+                self.bestsellerView.genrePickerView.selectRow(14, inComponent: 0, animated: false)
             }
         }
     }
@@ -60,11 +57,15 @@ class NYTBestSellersViewController: UIViewController {
         bestsellerView.genrePickerView.delegate = self
         loadBooks(category: "manga")
         bestsellerView.bestSellerCollectionView.register(BookCell.self, forCellWithReuseIdentifier: "bookCell")
+        navigationItem.title = "NYT Bestseller"
     }
     
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(true)
             getCategory()
+            if let currentRow = UserDefaults.standard.object(forKey: UserPreferenceKey.updateSelectedRow.rawValue)  {
+                bestsellerView.genrePickerView.selectRow(currentRow as! Int, inComponent: 0, animated: false)
+            }
         }
         
     private func loadPickerView()   {
@@ -115,6 +116,7 @@ extension NYTBestSellersViewController: UICollectionViewDataSource  {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "bookCell", for: indexPath) as? BookCell
         let book = books[indexPath.row]
         cell?.configureCell(for: book)
+        cell?.backgroundColor = .systemIndigo
         return cell!
     }
     
@@ -131,8 +133,8 @@ extension NYTBestSellersViewController: UICollectionViewDelegateFlowLayout   {
         let maxWidth = UIScreen.main.bounds.size.width
         let numberOfItems: CGFloat = 1
         let totalSpace: CGFloat = numberOfItems * itemSpacing
-        let itemWidth: CGFloat = (maxWidth - totalSpace) / numberOfItems
-        return CGSize(width: itemWidth, height: itemWidth/1.5)
+        let itemWidth: CGFloat = (maxWidth - totalSpace) / 1
+        return CGSize(width: itemWidth/2, height: itemWidth/1.5)
     }
 }
 
