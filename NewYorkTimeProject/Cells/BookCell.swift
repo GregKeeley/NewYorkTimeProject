@@ -9,7 +9,11 @@
 import UIKit
 
 class BookCell: UICollectionViewCell {
-    
+    override func layoutSubviews() {
+      super.layoutSubviews()
+      self.clipsToBounds = true
+      self.layer.cornerRadius = 13
+    }
     public lazy var bookImageView: UIImageView =    {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
