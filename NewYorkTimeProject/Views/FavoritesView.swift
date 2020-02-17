@@ -17,7 +17,7 @@ class FavoritesView: UIView {
         layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10)
         let collectionView = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = #colorLiteral(red: 0.9633663297, green: 0.8417919278, blue: 0.7775592804, alpha: 1)
+        collectionView.backgroundColor = #colorLiteral(red: 1, green: 0.818012774, blue: 0.9189140201, alpha: 1)
         return collectionView
     }()
     

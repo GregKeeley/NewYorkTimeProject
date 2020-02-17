@@ -16,14 +16,14 @@ class NYTTabBarController: UITabBarController {
     private lazy var nytBestSellersVC: NYTBestSellersViewController = {
        let viewController = NYTBestSellersViewController(dataPersistence)
         viewController.tabBarItem = UITabBarItem(title: "Best Sellers", image: UIImage(systemName: "book.fill"), tag: 0)
-        viewController.view.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+        viewController.view.backgroundColor = #colorLiteral(red: 0.7739111781, green: 1, blue: 0.8726517558, alpha: 1)
         return viewController
     }()
     
     private lazy var favoritesVC: FavoritesViewController = {
         let viewController = FavoritesViewController(dataPersistence)
         viewController.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "bookmark.fill"), tag: 1)
-        viewController.view.backgroundColor = #colorLiteral(red: 1, green: 0.5062019825, blue: 0.7077280879, alpha: 1)
+        viewController.view.backgroundColor = .systemBackground
         return viewController
     }()
     

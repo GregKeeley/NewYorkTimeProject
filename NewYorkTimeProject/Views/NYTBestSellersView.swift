@@ -15,7 +15,7 @@ class NYTBestSellersView: UIView {
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.register(BookCell.self, forCellWithReuseIdentifier: "bookCell")
-        collectionView.backgroundColor = .systemOrange
+        collectionView.backgroundColor = #colorLiteral(red: 0.7739111781, green: 1, blue: 0.8726517558, alpha: 1)
         return collectionView
     }()
     

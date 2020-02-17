@@ -22,7 +22,7 @@ class FavoritesViewController: UIViewController {
         didSet {
             favoriteBooksView.collectionView.reloadData()
             if favoriteBook.isEmpty {
-                favoriteBooksView.collectionView.backgroundView = nil // ADD EMPTY FILE
+                favoriteBooksView.collectionView.backgroundView = EmptyView.init(title: "Collection Empty", message: "There are currently no saved books")
             } else {
                 favoriteBooksView.collectionView.reloadData()
                 favoriteBooksView.collectionView.backgroundView = nil
@@ -46,7 +46,6 @@ class FavoritesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//      view = favoriteBooksView
         favoriteBooksView.collectionView.dataSource = self
         favoriteBooksView.collectionView.delegate = self
         favoriteBooksView.collectionView.register(FavoriteCell.self, forCellWithReuseIdentifier: "favCell")
@@ -55,7 +54,6 @@ class FavoritesViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         fetchFavBook()
-        dump(favoriteBook)
     }
     
     
@@ -133,7 +131,7 @@ extension FavoritesViewController: FavoriteBookDelegate {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         // cancel action
-        let cancelAction = UIAlertAction(title: "Canel", style: .cancel)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertController.addAction(cancelAction)
 
         // delete action
@@ -147,14 +145,15 @@ extension FavoritesViewController: FavoriteBookDelegate {
         
     }
     
-    private func deleteBook(_ article: Books) {
-        guard let index = favoriteBook.firstIndex(of: article) else {
+    private func deleteBook(_ book: Books) {
+        guard let index = favoriteBook.firstIndex(of: book) else {
             return
         }
         do {
             try dataPersistance.deleteItem(at: index)
+            showAlert(title: "Deleted", message: "successfully deleted \(book.title) from your collection")
         } catch {
-            showAlert(title: "ERROR", message: "Could not delete \(favoriteBook.description)")
+            showAlert(title: "ERROR", message: "Could not delete \(book.title)")
           print("error\(error)")
         }
     }

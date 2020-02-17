@@ -18,16 +18,23 @@ class FavoriteCell: UICollectionViewCell {
     
     weak var delegate: FavoriteBookDelegate?
     
-    lazy var bookImage: UIImageView = {
+    override func layoutSubviews() {
+      super.layoutSubviews()
+      self.clipsToBounds = true
+      self.layer.cornerRadius = 13
+    }
+    
+    public lazy var bookImage: UIImageView = {
         let image = UIImageView()
         return image
     }()
     
-    lazy var optionButton: UIButton = {
+    public lazy var optionButton: UIButton = {
         let button = UIButton()
         button.setBackgroundImage(.actions, for: .normal)
         button.tintColor = .black
         button.backgroundColor = .white
+        button.addTarget(self, action: #selector(moreButtonPressed(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -53,7 +60,7 @@ class FavoriteCell: UICollectionViewCell {
     }()
     
     override init(frame: CGRect) {
-        super .init(frame: UIScreen.main.bounds)
+        super.init(frame: UIScreen.main.bounds)
         commonInit()
     }
     
@@ -69,6 +76,9 @@ class FavoriteCell: UICollectionViewCell {
         descriptionLabelConstraints()
     }
     
+    @objc func moreButtonPressed(_ sender: UIButton) {
+        delegate?.didSelectMoreButton(self, book: currentFav)
+    }
     
     private func optionButtonConstraints() {
         addSubview(optionButton)
@@ -147,4 +157,5 @@ class FavoriteCell: UICollectionViewCell {
             }
         }
     }
+    
 }
