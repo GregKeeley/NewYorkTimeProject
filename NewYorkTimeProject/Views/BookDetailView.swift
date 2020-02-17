@@ -87,9 +87,9 @@ class BookDetailView: UIView {
     private func commonInit() {
         bookImageConstraints()
         buttonStackConstraints()
-        //titleLabelConstraints()
-        //authorLabelConstraints()
-        //descriptionLabelConstraints()
+        titleLabelConstraints()
+        authorLabelConstraints()
+        descriptionLabelConstraints()
     }
     private func arrayButtons() -> [UIButton] {
         let arrayOfButtons = [amazonButton, appleBooksButton, barnesNobelButton, localStoreButton]
@@ -102,7 +102,7 @@ class BookDetailView: UIView {
         NSLayoutConstraint.activate([
             bookImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0),
             bookImage.centerXAnchor.constraint(equalTo: centerXAnchor),
-            bookImage.widthAnchor.constraint(equalToConstant: 100),
+            bookImage.widthAnchor.constraint(equalToConstant: 200),
             bookImage.heightAnchor.constraint(equalTo: bookImage.widthAnchor)
             
         ])
@@ -115,8 +115,8 @@ class BookDetailView: UIView {
             buyButtonStack.topAnchor.constraint(equalTo: bookImage.topAnchor),
             buyButtonStack.leadingAnchor.constraint(equalTo: bookImage.trailingAnchor, constant: 0),
             buyButtonStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-            buyButtonStack.widthAnchor.constraint(equalToConstant: 60),
-            buyButtonStack.heightAnchor.constraint(equalTo: widthAnchor)
+            buyButtonStack.widthAnchor.constraint(equalToConstant: 70),
+            buyButtonStack.heightAnchor.constraint(equalTo: bookImage.heightAnchor)
         ])
     }
     private func titleLabelConstraints() {
