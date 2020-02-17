@@ -45,27 +45,33 @@ class BookDetailView: UIView {
         let stack = UIStackView(arrangedSubviews: [amazonButton, appleBooksButton, barnesNobelButton, localStoreButton])
         stack.axis = .vertical
         stack.distribution = .fillEqually
+        stack.alignment = .fill
         stack.spacing = 5
+        stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     public lazy var amazonButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Amazon", for: .normal)
+        button.setImage(UIImage(named: "amazon"), for: .normal)
+        button.backgroundColor = .red
         return button
     }()
     public lazy var appleBooksButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Apple Books", for: .normal)
+        button.setImage(UIImage(named: "appleBooks"), for: .normal)
+        button.backgroundColor = .orange
         return button
     }()
     public lazy var barnesNobelButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Barnes & Nobel", for: .normal)
+        button.setImage(UIImage(named: "barnes&Nobel"), for: .normal)
+        button.backgroundColor = .green
         return button
     }()
     public lazy var localStoreButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Local Bookstores", for: .normal)
+        button.setImage(UIImage(named: "bookStore"), for: .normal)
+        button.backgroundColor = .blue
         return button
     }()
     
@@ -81,32 +87,36 @@ class BookDetailView: UIView {
     private func commonInit() {
         bookImageConstraints()
         buttonStackConstraints()
-        titleLabelConstraints()
-        authorLabelConstraints()
-        descriptionLabelConstraints()
+        //titleLabelConstraints()
+        //authorLabelConstraints()
+        //descriptionLabelConstraints()
     }
-    
+    private func arrayButtons() -> [UIButton] {
+        let arrayOfButtons = [amazonButton, appleBooksButton, barnesNobelButton, localStoreButton]
+        return arrayOfButtons
+    }
     private func bookImageConstraints() {
         addSubview(bookImage)
         bookImage.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            bookImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            bookImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0),
             bookImage.centerXAnchor.constraint(equalTo: centerXAnchor),
-            bookImage.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 3),
+            bookImage.widthAnchor.constraint(equalToConstant: 100),
+            bookImage.heightAnchor.constraint(equalTo: bookImage.widthAnchor)
             
         ])
     }
     private func buttonStackConstraints() {
         addSubview(buyButtonStack)
         buyButtonStack.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             buyButtonStack.topAnchor.constraint(equalTo: bookImage.topAnchor),
-            buyButtonStack.leadingAnchor.constraint(equalTo: bookImage.trailingAnchor, constant: 8)
-//            buyButtonStack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
-//            buyButtonStack.leadingAnchor.constraint(equalTo: bookImage.trailingAnchor, constant: 8),
-//            buyButtonStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
+            buyButtonStack.leadingAnchor.constraint(equalTo: bookImage.trailingAnchor, constant: 0),
+            buyButtonStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            buyButtonStack.widthAnchor.constraint(equalToConstant: 60),
+            buyButtonStack.heightAnchor.constraint(equalTo: widthAnchor)
         ])
     }
     private func titleLabelConstraints() {
