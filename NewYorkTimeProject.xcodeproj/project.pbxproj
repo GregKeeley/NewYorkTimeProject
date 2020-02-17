@@ -19,6 +19,7 @@
 		C102CD7823EB5AE2000C389B /* NYTAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C102CD7723EB5AE2000C389B /* NYTAPIClient.swift */; };
 		C102CD7A23EB5AFA000C389B /* NYTBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = C102CD7923EB5AFA000C389B /* NYTBook.swift */; };
 		C102CD7E23EB5B6F000C389B /* ImageKit in Frameworks */ = {isa = PBXBuildFile; productRef = C102CD7D23EB5B6F000C389B /* ImageKit */; };
+		C119EF6223FB50FE00881CB3 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C119EF6123FB50FE00881CB3 /* EmptyView.swift */; };
 		C16C225C23F05090008C12AB /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16C225B23F05090008C12AB /* Secrets.swift */; };
 		C16C226423F082A0008C12AB /* NewYorkTimeProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16C226323F082A0008C12AB /* NewYorkTimeProjectTests.swift */; };
 		C16C226C23F08597008C12AB /* NYTCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16C226B23F08597008C12AB /* NYTCategory.swift */; };
@@ -54,6 +55,7 @@
 		C102CD7523EB5A95000C389B /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		C102CD7723EB5AE2000C389B /* NYTAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTAPIClient.swift; sourceTree = "<group>"; };
 		C102CD7923EB5AFA000C389B /* NYTBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTBook.swift; sourceTree = "<group>"; };
+		C119EF6123FB50FE00881CB3 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		C16C225B23F05090008C12AB /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		C16C226123F082A0008C12AB /* NewYorkTimeProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewYorkTimeProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C16C226323F082A0008C12AB /* NewYorkTimeProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewYorkTimeProjectTests.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				C102CD6723EB5997000C389B /* FavoritesView.swift */,
 				C102CD6923EB59A9000C389B /* BookDetailView.swift */,
 				C102CD6B23EB59B6000C389B /* SettingsView.swift */,
+				C119EF6123FB50FE00881CB3 /* EmptyView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				C102CD7A23EB5AFA000C389B /* NYTBook.swift in Sources */,
 				C6400EF323F7040D00FE38F1 /* ShowAlert.swift in Sources */,
 				C102CD6E23EB59E5000C389B /* BookDetailViewController.swift in Sources */,
+				C119EF6223FB50FE00881CB3 /* EmptyView.swift in Sources */,
 				C172682923EB587E000CD944 /* NYTTabBarController.swift in Sources */,
 				C102CD6623EB5980000C389B /* NYTBestSellersView.swift in Sources */,
 				C102CD6A23EB59A9000C389B /* BookDetailView.swift in Sources */,
