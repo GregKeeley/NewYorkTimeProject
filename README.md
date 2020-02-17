@@ -23,9 +23,12 @@ New York Times Best Sellers app allows a user to browse the recent best selling 
 
 ## Collaborators
 
-[Casandra Grullon](https://github.com/CasandraGrullon),
-[Juan Ceballos](https://github.com/Juan-Ceballos),
-[Jaheed Haynes](https://github.com/jaheedhaynes),
+[Casandra Grullon](https://github.com/CasandraGrullon)
+
+[Juan Ceballos](https://github.com/Juan-Ceballos)
+
+[Jaheed Haynes](https://github.com/jaheedhaynes)
+
 [Gregory Keeley](https://github.com/GregKeeley)
 
 
