@@ -11,6 +11,7 @@ import UIKit
 //TODO: refactor to tab bar later
 public enum UserPreferenceKey: String {
     case selectedCatergory = "Category"
+    case updateSelectedRow = "Selected Row"
 }
 
 class SettingsViewController: UIViewController {
@@ -50,6 +51,7 @@ extension SettingsViewController: UIPickerViewDelegate {
         let selected = bookCategories[row]
         selectedCategory = selected
         UserDefaults.standard.set(selected, forKey: UserPreferenceKey.selectedCatergory.rawValue)
+        UserDefaults.standard.set(row, forKey: UserPreferenceKey.updateSelectedRow.rawValue)
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return bookCategories[row]

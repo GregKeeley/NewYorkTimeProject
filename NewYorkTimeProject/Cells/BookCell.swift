@@ -14,15 +14,16 @@ class BookCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.image = UIImage(systemName: "book.fill")
+        imageView.backgroundColor = .systemRed
         return imageView
     }()
     
-    public lazy var titleLabel: UILabel =   {
+    public lazy var noOfWeeksLavel: UILabel =   {
         let label = UILabel()
-        label.text = "test label"
         label.textAlignment = .center
-        label.numberOfLines = 2
-        label.font = .boldSystemFont(ofSize: 20)
+        label.backgroundColor = .systemGray
+        label.font = .boldSystemFont(ofSize: 17)
+        label.numberOfLines = 1
         return label
     }()
     
@@ -30,13 +31,15 @@ class BookCell: UICollectionViewCell {
         let textView = UILabel()
         textView.text = "test textview"
         textView.textAlignment = .center
-        textView.numberOfLines = 1
+        textView.numberOfLines = 0
+        textView.adjustsFontSizeToFitWidth = true
+        textView.backgroundColor = .systemPink
         return textView
     }()
     
     public func configureCell(for book: Books)    {
-        self.titleLabel.text = book.title
-        self.descriptionTextView.text = "\(book.weeksOnList) weeks on Best Sellers List"
+        self.descriptionTextView.text = book.description
+        self.noOfWeeksLavel.text = "\(book.weeksOnList) weeks on best seller list"
         self.bookImageView.getImage(with: book.bookImage) { (result) in
             switch result   {
             case .failure(let appError):
@@ -61,45 +64,46 @@ class BookCell: UICollectionViewCell {
     }
     
     private func commonInit() {
-        setupTitleLabelConstraints()
         setupBookImageViewConstraints()
+        setupNoOfWeeksLabel()
         setupDescriptionTextViewConstraints()
     }
-    
-    private func setupTitleLabelConstraints()   {
-        addSubview(titleLabel)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 1),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50)
-            
-        ])
         
-    }
     private func setupBookImageViewConstraints()   {
         
         addSubview(bookImageView)
         bookImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             
-            bookImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
+            bookImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             bookImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            bookImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.8),
+            bookImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
             bookImageView.widthAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3)
         ])
         
     }
+    
+    private func setupNoOfWeeksLabel()  {
+        addSubview(noOfWeeksLavel)
+        noOfWeeksLavel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+        
+            noOfWeeksLavel.topAnchor.constraint(equalTo: bookImageView.bottomAnchor, constant: 8),
+            noOfWeeksLavel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            noOfWeeksLavel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
+        
+        ])
+    }
+    
     private func setupDescriptionTextViewConstraints()  {
         addSubview(descriptionTextView)
         descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             
-            descriptionTextView.topAnchor.constraint(equalTo: bookImageView.bottomAnchor, constant: 8),
+            descriptionTextView.topAnchor.constraint(equalTo: noOfWeeksLavel.bottomAnchor, constant: 8),
             descriptionTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
             descriptionTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-            descriptionTextView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2),
+            descriptionTextView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3),
             
         ])
     }
