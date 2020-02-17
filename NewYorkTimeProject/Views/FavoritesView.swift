@@ -14,7 +14,7 @@ class FavoritesView: UIView {
     public lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize.init(width: 250, height: 250)
-        layout.scrollDirection = .horizontal
+        layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10)
         let collectionView = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.backgroundColor = #colorLiteral(red: 0.9633663297, green: 0.8417919278, blue: 0.7775592804, alpha: 1)
@@ -48,10 +48,14 @@ class FavoritesView: UIView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            collectionView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            collectionView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
+            collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor)
+//            collectionView.centerXAnchor.constraint(equalTo: centerXAnchor),
+//            collectionView.centerYAnchor.constraint(equalTo: centerYAnchor),
+//            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+//            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
         ])
         
     }

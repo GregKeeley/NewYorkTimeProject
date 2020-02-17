@@ -24,6 +24,7 @@ class FavoritesViewController: UIViewController {
             if favoriteBook.isEmpty {
                 favoriteBooksView.collectionView.backgroundView = nil // ADD EMPTY FILE
             } else {
+                favoriteBooksView.collectionView.reloadData()
                 favoriteBooksView.collectionView.backgroundView = nil
             }
         }
@@ -39,11 +40,23 @@ class FavoritesViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    override func viewDidLoad() {
+    override func loadView() {
         view = favoriteBooksView
     }
-    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+//      view = favoriteBooksView
+        favoriteBooksView.collectionView.dataSource = self
+        favoriteBooksView.collectionView.delegate = self
+        favoriteBooksView.collectionView.register(FavoriteCell.self, forCellWithReuseIdentifier: "favCell")
+        fetchFavBook()
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        fetchFavBook()
+        dump(favoriteBook)
+    }
     
     
     private func fetchFavBook() {
@@ -66,7 +79,7 @@ extension FavoritesViewController: UICollectionViewDataSource {
             fatalError("could not downcast cell")
         }
         let favBook = favoriteBook[indexPath.row]
-        cell.backgroundColor = .clear
+        cell.backgroundColor = .white
         cell.configureCell(for: favBook)
         cell.delegate = self
         return cell
@@ -79,12 +92,13 @@ extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let maxSize: CGSize = UIScreen.main.bounds.size
-        let spacingBetweenItems: CGFloat = 10
-        let numberOfItems: CGFloat = 2
-        let itemHeight: CGFloat = maxSize.height * 0.30
-        let totalSpacing: CGFloat = (2 * spacingBetweenItems) + (numberOfItems - 1) * spacingBetweenItems
-        let itemWidth: CGFloat = (maxSize.width - totalSpacing) / numberOfItems
-        return CGSize(width: itemWidth, height: itemHeight)
+//        let spacingBetweenItems: CGFloat = 10
+//        let numberOfItems: CGFloat = 2
+//        let itemHeight: CGFloat = maxSize.height * 0.30
+//        let totalSpacing: CGFloat = (2 * spacingBetweenItems) + (numberOfItems - 1) * spacingBetweenItems
+//        let itemWidth: CGFloat = (maxSize.width - totalSpacing) / numberOfItems
+//        return CGSize(width: itemWidth, height: itemHeight)
+        return CGSize(width: (maxSize.width * 0.95), height: (maxSize.height * 0.50))
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
