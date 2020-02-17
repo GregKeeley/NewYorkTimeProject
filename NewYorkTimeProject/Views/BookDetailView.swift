@@ -11,7 +11,7 @@ import UIKit
 class BookDetailView: UIView {
     
     private var currentBook: Books?
-    
+        
     public lazy var bookImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -53,25 +53,21 @@ class BookDetailView: UIView {
     public lazy var amazonButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "amazon"), for: .normal)
-        button.backgroundColor = .red
         return button
     }()
     public lazy var appleBooksButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "appleBooks"), for: .normal)
-        button.backgroundColor = .orange
         return button
     }()
     public lazy var barnesNobelButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "barnes&Nobel"), for: .normal)
-        button.backgroundColor = .green
         return button
     }()
     public lazy var localStoreButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "bookStore"), for: .normal)
-        button.backgroundColor = .blue
         return button
     }()
     
@@ -91,10 +87,7 @@ class BookDetailView: UIView {
         authorLabelConstraints()
         descriptionLabelConstraints()
     }
-    private func arrayButtons() -> [UIButton] {
-        let arrayOfButtons = [amazonButton, appleBooksButton, barnesNobelButton, localStoreButton]
-        return arrayOfButtons
-    }
+
     private func bookImageConstraints() {
         addSubview(bookImage)
         bookImage.translatesAutoresizingMaskIntoConstraints = false

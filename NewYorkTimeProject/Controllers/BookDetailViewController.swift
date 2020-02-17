@@ -40,6 +40,7 @@ class BookDetailViewController: UIViewController {
         super.viewDidLoad()
         configureNavBar()
         updateUI()
+        configureButtons()
     }
     
     private func updateUI() {
@@ -72,7 +73,6 @@ class BookDetailViewController: UIViewController {
     }
     
     @objc private func favoritesButtonPressed(_ sender: UIBarButtonItem){
-        
         if dataPersistence.hasItemBeenSaved(book) {
             showAlert(title: "Already saved", message: "this book has already been added to your favorites")
             sender.image = UIImage(systemName: "heart.fill")
@@ -145,3 +145,4 @@ class BookDetailViewController: UIViewController {
     
     
 }
+
