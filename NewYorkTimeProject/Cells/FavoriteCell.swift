@@ -33,12 +33,16 @@ class FavoriteCell: UICollectionViewCell {
     
     lazy var weeksLabel: UILabel = {
         let label = UILabel()
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.font = UIFont(name: "AmericanTypewriter-CondensedBold", size: 20.0)
         label.text = "Number of Weeks"
         return label
     }()
-    
+    public lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        return label
+    }()
    lazy var favTextView: UITextView = {
     let textView = UITextView()
     textView.backgroundColor = .white
@@ -62,6 +66,7 @@ class FavoriteCell: UICollectionViewCell {
         optionButtonConstraints()
         bookImageConstraints()
         weeksLabelConstraints()
+        descriptionLabelConstraints()
     }
     
     
@@ -69,9 +74,9 @@ class FavoriteCell: UICollectionViewCell {
         addSubview(optionButton)
         optionButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            optionButton.topAnchor.constraint(equalTo: topAnchor),
-            optionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            optionButton.heightAnchor.constraint(equalToConstant: 44),
+            optionButton.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            optionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            optionButton.heightAnchor.constraint(equalToConstant: safeAreaLayoutGuide.layoutFrame.width / 12),
             optionButton.widthAnchor.constraint(equalTo: optionButton.heightAnchor)
         ])
     }
@@ -80,10 +85,12 @@ class FavoriteCell: UICollectionViewCell {
         addSubview(bookImage)
         bookImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            bookImage.topAnchor.constraint(equalTo: optionButton.bottomAnchor, constant: 10),
-            bookImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            bookImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            bookImage.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+            
+            bookImage.centerXAnchor.constraint(equalTo: centerXAnchor),
+            bookImage.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            bookImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
+            bookImage.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5)
+
         ])
     }
     
@@ -91,10 +98,11 @@ class FavoriteCell: UICollectionViewCell {
         addSubview(weeksLabel)
         weeksLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-//            weeksLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            
             weeksLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            weeksLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            weeksLabel.bottomAnchor.constraint(equalTo: bookImage.bottomAnchor, constant: 20)
+            weeksLabel.topAnchor.constraint(equalTo: bookImage.bottomAnchor, constant: 10),
+            weeksLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
+            
         ])
     }
     
@@ -103,15 +111,30 @@ class FavoriteCell: UICollectionViewCell {
         favTextView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            favTextView.topAnchor.constraint(equalTo: weeksLabel.bottomAnchor, constant: 10),
-            favTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            favTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 10)
+
+            
+            
+        ])
+    }
+    private func descriptionLabelConstraints() {
+        addSubview(descriptionLabel)
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+
+            descriptionLabel.topAnchor.constraint(equalTo: weeksLabel.bottomAnchor, constant: 10),
+            descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
+            
         ])
     }
     
     public func configureCell(for favBook: Books) {
         currentFav = favBook // associating the cell with its Book
         favTextView.text = favBook.description
+        weeksLabel.text = ("\(favBook.weeksOnList) weeks on best seller list")
+        descriptionLabel.text = favBook.description
         self.bookImage.getImage(with: favBook.bookImage) { (result) in
             switch result   {
             case .failure(let appError):

@@ -14,7 +14,7 @@ class FavoritesView: UIView {
     public lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize.init(width: 250, height: 250)
-        layout.scrollDirection = .horizontal
+        layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10)
         let collectionView = UICollectionView.init(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.backgroundColor = #colorLiteral(red: 0.9633663297, green: 0.8417919278, blue: 0.7775592804, alpha: 1)

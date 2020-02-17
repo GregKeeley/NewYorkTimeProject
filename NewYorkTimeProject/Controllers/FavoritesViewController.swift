@@ -92,12 +92,13 @@ extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let maxSize: CGSize = UIScreen.main.bounds.size
-        let spacingBetweenItems: CGFloat = 10
-        let numberOfItems: CGFloat = 2
-        let itemHeight: CGFloat = maxSize.height * 0.30
-        let totalSpacing: CGFloat = (2 * spacingBetweenItems) + (numberOfItems - 1) * spacingBetweenItems
-        let itemWidth: CGFloat = (maxSize.width - totalSpacing) / numberOfItems
-        return CGSize(width: itemWidth, height: itemHeight)
+//        let spacingBetweenItems: CGFloat = 10
+//        let numberOfItems: CGFloat = 2
+//        let itemHeight: CGFloat = maxSize.height * 0.30
+//        let totalSpacing: CGFloat = (2 * spacingBetweenItems) + (numberOfItems - 1) * spacingBetweenItems
+//        let itemWidth: CGFloat = (maxSize.width - totalSpacing) / numberOfItems
+//        return CGSize(width: itemWidth, height: itemHeight)
+        return CGSize(width: (maxSize.width * 0.95), height: (maxSize.height * 0.50))
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
