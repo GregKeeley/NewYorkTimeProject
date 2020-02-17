@@ -113,11 +113,17 @@ extension NYTBestSellersViewController: UICollectionViewDataSource  {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "bookCell", for: indexPath) as? BookCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "bookCell", for: indexPath) as? BookCell else {
+            fatalError("could not cast to cell")
+        }
         let book = books[indexPath.row]
-        cell?.configureCell(for: book)
-        cell?.backgroundColor = .systemIndigo
-        return cell!
+        cell.configureCell(for: book)
+        if book.rank == 1 {
+            cell.backgroundColor = .yellow
+        } else {
+            cell.backgroundColor = .white
+        }
+        return cell
     }
     
 }

@@ -74,7 +74,6 @@ class BookDetailViewController: UIViewController {
     @objc private func favoritesButtonPressed(_ sender: UIBarButtonItem){
         sender.image = UIImage(systemName: "heart.fill")
         
-//        showAlert(title: "♥️", message: "\(book?.title ?? "test") was added to your favorites")
         delegate?.didSaveBook(book: book)
         
         do {
