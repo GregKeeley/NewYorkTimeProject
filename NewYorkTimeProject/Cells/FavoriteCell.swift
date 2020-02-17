@@ -82,7 +82,8 @@ class FavoriteCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             bookImage.topAnchor.constraint(equalTo: optionButton.bottomAnchor, constant: 10),
             bookImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            bookImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
+            bookImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            bookImage.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
@@ -90,10 +91,10 @@ class FavoriteCell: UICollectionViewCell {
         addSubview(weeksLabel)
         weeksLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            weeksLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+//            weeksLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             weeksLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             weeksLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            weeksLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+            weeksLabel.bottomAnchor.constraint(equalTo: bookImage.bottomAnchor, constant: 20)
         ])
     }
     
@@ -110,5 +111,17 @@ class FavoriteCell: UICollectionViewCell {
     
     public func configureCell(for favBook: Books) {
         currentFav = favBook // associating the cell with its Book
+        favTextView.text = favBook.description
+        self.bookImage.getImage(with: favBook.bookImage) { (result) in
+            switch result   {
+            case .failure(let appError):
+                print(appError)
+            case .success(let bookImage):
+                DispatchQueue.main.async {
+                    self.bookImage.image = bookImage
+                    
+                }
+            }
+        }
     }
 }

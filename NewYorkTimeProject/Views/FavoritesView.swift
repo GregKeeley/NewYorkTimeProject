@@ -48,10 +48,14 @@ class FavoritesView: UIView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            collectionView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            collectionView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
+            collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor)
+//            collectionView.centerXAnchor.constraint(equalTo: centerXAnchor),
+//            collectionView.centerYAnchor.constraint(equalTo: centerYAnchor),
+//            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+//            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
         ])
         
     }
