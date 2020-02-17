@@ -41,6 +41,7 @@ class BookDetailViewController: UIViewController {
         configureNavBar()
         updateUI()
         configureButtons()
+        
     }
     
     private func updateUI() {
@@ -62,10 +63,11 @@ class BookDetailViewController: UIViewController {
         }
     }
     private func configureButtons() {
-        bookDetailView.amazonButton.addTarget(bookDetailView.amazonButton, action: #selector(amazonButtonPressed(_:)), for: .touchUpInside)
-        bookDetailView.appleBooksButton.addTarget(bookDetailView.appleBooksButton, action: #selector(appleBooksButtonPressed(_:)), for: .touchUpInside)
-        bookDetailView.barnesNobelButton.addTarget(bookDetailView.barnesNobelButton, action: #selector(barnesNobelButtonPressed(_:)), for: .touchUpInside)
-        bookDetailView.localStoreButton.addTarget(bookDetailView.localStoreButton, action: #selector(localButtonPressed(_:)), for: .touchUpInside)
+        
+        bookDetailView.amazonButton.addTarget(self, action: #selector(amazonButtonPressed(_:)), for: .touchUpInside)
+        bookDetailView.appleBooksButton.addTarget(self, action: #selector(appleBooksButtonPressed(_:)), for: .touchUpInside)
+        bookDetailView.barnesNobelButton.addTarget(self, action: #selector(barnesNobelButtonPressed(_:)), for: .touchUpInside)
+        bookDetailView.localStoreButton.addTarget(self, action: #selector(localButtonPressed(_:)), for: .touchUpInside)
     }
     
     private func configureNavBar() {
@@ -89,7 +91,7 @@ class BookDetailViewController: UIViewController {
         }
     }
     
-    @objc private func amazonButtonPressed(_ sender: UIButton) {
+    @IBAction func amazonButtonPressed(_ sender: UIButton) {
         print("take user to amazon page")
         guard let book = book else {
             return
