@@ -96,10 +96,15 @@ class FavoriteCell: UICollectionViewCell {
         bookImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             
-            bookImage.centerXAnchor.constraint(equalTo: centerXAnchor),
             bookImage.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            bookImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
-            bookImage.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5)
+            bookImage.centerXAnchor.constraint(equalTo: centerXAnchor),
+            bookImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4),
+            bookImage.widthAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3)
+            // Original
+            //            bookImage.centerXAnchor.constraint(equalTo: centerXAnchor),
+            //            bookImage.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            //            bookImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
+            //            bookImage.widthAnchor.constraint(equalToConstant: (bookImage.image?.size.width ?? 1) * 0.5)
 
         ])
     }
