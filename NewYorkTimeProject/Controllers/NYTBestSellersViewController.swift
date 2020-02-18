@@ -142,6 +142,9 @@ extension NYTBestSellersViewController: UICollectionViewDelegateFlowLayout   {
         let itemWidth: CGFloat = (maxWidth - totalSpace) / 1
         return CGSize(width: itemWidth/2, height: itemWidth/1.5)
     }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10, left: 25, bottom: 10, right: 10)
+    }
 }
 
 extension NYTBestSellersViewController: UIPickerViewDataSource  {

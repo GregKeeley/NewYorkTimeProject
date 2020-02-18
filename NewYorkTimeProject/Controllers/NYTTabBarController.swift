@@ -23,7 +23,7 @@ class NYTTabBarController: UITabBarController {
     private lazy var favoritesVC: FavoritesViewController = {
         let viewController = FavoritesViewController(dataPersistence)
         viewController.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "bookmark.fill"), tag: 1)
-        viewController.view.backgroundColor = .systemBackground
+        viewController.view.backgroundColor = #colorLiteral(red: 1, green: 0.818012774, blue: 0.9189140201, alpha: 1)
         return viewController
     }()
     
