@@ -77,13 +77,10 @@ class BookCell: UICollectionViewCell {
     }
     
     private func commonInit() {
-        
         setupNum1ImageViewConstraints()
         setupBookImageViewConstraints()
         setupNoOfWeeksLabel()
         setupDescriptionTextViewConstraints()
-        
-        
     }
     
     private func setupNum1ImageViewConstraints() {

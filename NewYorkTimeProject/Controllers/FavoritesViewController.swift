@@ -50,8 +50,8 @@ class FavoritesViewController: UIViewController {
         favoriteBooksView.collectionView.delegate = self
         favoriteBooksView.collectionView.register(FavoriteCell.self, forCellWithReuseIdentifier: "favCell")
         fetchFavBook()
-        
     }
+    
     override func viewWillAppear(_ animated: Bool) {
          navigationController?.setNavigationBarHidden(true, animated: animated)
         fetchFavBook()
@@ -93,12 +93,6 @@ extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let maxSize: CGSize = UIScreen.main.bounds.size
-//        let spacingBetweenItems: CGFloat = 10
-//        let numberOfItems: CGFloat = 2
-//        let itemHeight: CGFloat = maxSize.height * 0.30
-//        let totalSpacing: CGFloat = (2 * spacingBetweenItems) + (numberOfItems - 1) * spacingBetweenItems
-//        let itemWidth: CGFloat = (maxSize.width - totalSpacing) / numberOfItems
-//        return CGSize(width: itemWidth, height: itemHeight)
         return CGSize(width: (maxSize.width * 0.95), height: (maxSize.height * 0.50))
     }
     
@@ -107,7 +101,6 @@ extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // programmatic segue
         let favBook = favoriteBook[indexPath.row]
         let detailVC = BookDetailViewController(dataPersistance, book: favBook)
         navigationController?.pushViewController(detailVC, animated: true)
@@ -128,16 +121,11 @@ extension FavoritesViewController: DataPersistenceDelegate {
 
 extension FavoritesViewController: FavoriteBookDelegate {
     func didSelectMoreButton(_ favBookCell: FavoriteCell, book: Books) {
-        print("didSelectMoreButton:\(book.title)")
-        
-        //MARK:  create an action sheet
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        // cancel action
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertController.addAction(cancelAction)
 
-        // delete action
         let popUpAction = UIAlertAction(title: "Delete", style: .destructive) { alertAction in
            self.deleteBook(book)
         }
@@ -157,7 +145,6 @@ extension FavoritesViewController: FavoriteBookDelegate {
             showAlert(title: "Deleted", message: "successfully deleted \(book.title) from your collection")
         } catch {
             showAlert(title: "ERROR", message: "Could not delete \(book.title)")
-          print("error\(error)")
         }
     }
 }

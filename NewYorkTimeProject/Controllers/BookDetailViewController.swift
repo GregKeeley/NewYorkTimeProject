@@ -92,7 +92,6 @@ class BookDetailViewController: UIViewController {
     }
     
     @IBAction func amazonButtonPressed(_ sender: UIButton) {
-        print("take user to amazon page")
         guard let book = book else {
             return
         }
@@ -106,7 +105,6 @@ class BookDetailViewController: UIViewController {
     }
     
     @objc private func appleBooksButtonPressed(_ sender: UIButton) {
-        print("take user to apple books page")
         guard let book = book else {
             return
         }
@@ -119,7 +117,6 @@ class BookDetailViewController: UIViewController {
         present(safariPage, animated: true)
     }
     @objc private func barnesNobelButtonPressed(_ sender: UIButton) {
-        print("take user to barnes & nobel page")
         guard let book = book else {
             return
         }
@@ -132,7 +129,6 @@ class BookDetailViewController: UIViewController {
         present(safariPage, animated: true)
     }
     @objc private func localButtonPressed(_ sender: UIButton) {
-        print("take user to local bookstore page")
         guard let book = book else {
             return
         }

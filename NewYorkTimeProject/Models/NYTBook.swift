@@ -22,7 +22,7 @@ struct NYTimeBook: Codable & Equatable {
 struct Results: Codable & Equatable {
     
     let listName: String
-    let bestSellersDate: String // Will need to be formatted for date
+    let bestSellersDate: String
     let displayName: String
     let books: [Books]
     
@@ -43,7 +43,7 @@ struct Books: Codable & Equatable {
     let description: String?
     let title: String
     let author: String
-    let bookImage: String // URL for book image
+    let bookImage: String
     let buyLinks: [BuyLinks]
     
     private enum CodingKeys: String, CodingKey {
@@ -59,6 +59,6 @@ struct Books: Codable & Equatable {
 }
 
 struct BuyLinks: Codable & Equatable {
-    let name: String // Company to purchase from
-    let url: String // URL to purchase link
+    let name: String
+    let url: String
 }
