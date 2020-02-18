@@ -100,12 +100,6 @@ class FavoriteCell: UICollectionViewCell {
             bookImage.centerXAnchor.constraint(equalTo: centerXAnchor),
             bookImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4),
             bookImage.widthAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3)
-            // Original
-            //            bookImage.centerXAnchor.constraint(equalTo: centerXAnchor),
-            //            bookImage.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            //            bookImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
-            //            bookImage.widthAnchor.constraint(equalToConstant: (bookImage.image?.size.width ?? 1) * 0.5)
-
         ])
     }
     
@@ -146,7 +140,7 @@ class FavoriteCell: UICollectionViewCell {
     }
     
     public func configureCell(for favBook: Books) {
-        currentFav = favBook // associating the cell with its Book
+        currentFav = favBook
         favTextView.text = favBook.description
         weeksLabel.text = ("\(favBook.weeksOnList) weeks on best seller list")
         descriptionLabel.text = favBook.description
