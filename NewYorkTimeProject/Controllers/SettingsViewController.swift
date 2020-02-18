@@ -31,6 +31,8 @@ class SettingsViewController: UIViewController {
         settingsView.picker.delegate = self
         settingsView.picker.dataSource = self
         loadCategories()
+        configureButton()
+        settingsView.settingsLabel.text = "Change your default category"
     }
     
     private func loadCategories() {
@@ -44,15 +46,32 @@ class SettingsViewController: UIViewController {
         }
     }
     
+    private func configureButton() {
+        settingsView.settingsButton.addTarget(self, action: #selector(settingButtonPressed(_:)), for: .touchUpInside)
+    }
+    
+    @objc func settingButtonPressed(_ sender: UIButton) {
+        UserDefaults.standard.set(selectedCategory, forKey: UserPreferenceKey.selectedCatergory.rawValue)
+        settingsView.settingsLabel.text = "Your Default Category: \n\(selectedCategory ?? "")"
+        buttonAnimation()
+    }
+    
+    private func buttonAnimation() {
+        UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [], animations: {
+            self.settingsView.settingsButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        }) { (done) in
+            self.settingsView.settingsButton.transform = CGAffineTransform.identity
+        }
+    }
 
 }
 extension SettingsViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let selected = bookCategories[row]
         selectedCategory = selected
-        UserDefaults.standard.set(selected, forKey: UserPreferenceKey.selectedCatergory.rawValue)
         UserDefaults.standard.set(row, forKey: UserPreferenceKey.updateSelectedRow.rawValue)
     }
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return bookCategories[row]
     }

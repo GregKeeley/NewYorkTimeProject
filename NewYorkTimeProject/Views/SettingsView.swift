@@ -9,10 +9,31 @@
 import UIKit
 
 class SettingsView: UIView {
+    override func layoutSubviews() {
+      super.layoutSubviews()
+      settingsButton.clipsToBounds = true
+      settingsButton.layer.cornerRadius = 13
+    }
     
-    public var picker: UIPickerView = {
+    public lazy var settingsLabel: UILabel = {
+       let label = UILabel()
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.text = "settings"
+        return label
+    }()
+    
+    public lazy var picker: UIPickerView = {
         let pick = UIPickerView()
         return pick
+    }()
+    
+    public lazy var settingsButton: UIButton = {
+       let button = UIButton()
+        button.setTitle("Save Changes", for: .normal)
+        button.backgroundColor = #colorLiteral(red: 0, green: 0.7581976056, blue: 0.4109169245, alpha: 1)
+        return button
     }()
     
     override init(frame: CGRect) {
@@ -24,9 +45,21 @@ class SettingsView: UIView {
         commonInit()
     }
     private func commonInit() {
+        
         pickerConstraints()
+        settingsLabelConstraints()
+        buttonConstraints()
     }
     
+    private func settingsLabelConstraints() {
+        addSubview(settingsLabel)
+        settingsLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            settingsLabel.topAnchor.constraint(equalTo: picker.topAnchor, constant: -20),
+            settingsLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            settingsLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8)
+        ])
+    }
     private func pickerConstraints() {
         addSubview(picker)
         picker.translatesAutoresizingMaskIntoConstraints = false
@@ -34,6 +67,15 @@ class SettingsView: UIView {
         NSLayoutConstraint.activate([
             picker.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
             picker.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor)
+        ])
+    }
+    private func buttonConstraints() {
+        addSubview(settingsButton)
+        settingsButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            settingsButton.topAnchor.constraint(equalTo: picker.bottomAnchor, constant: 10),
+            settingsButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            settingsButton.widthAnchor.constraint(equalToConstant: 200)
         ])
     }
     
