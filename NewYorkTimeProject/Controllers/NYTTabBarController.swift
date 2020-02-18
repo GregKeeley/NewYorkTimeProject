@@ -16,7 +16,7 @@ class NYTTabBarController: UITabBarController {
     private lazy var nytBestSellersVC: NYTBestSellersViewController = {
        let viewController = NYTBestSellersViewController(dataPersistence)
         viewController.tabBarItem = UITabBarItem(title: "Best Sellers", image: UIImage(systemName: "book.fill"), tag: 0)
-        viewController.view.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+        viewController.view.backgroundColor = #colorLiteral(red: 0.7739111781, green: 1, blue: 0.8726517558, alpha: 1)
         return viewController
     }()
     

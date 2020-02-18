@@ -28,6 +28,7 @@
 		C172681923EB574B000CD944 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C172681823EB574B000CD944 /* Assets.xcassets */; };
 		C172681C23EB574B000CD944 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C172681A23EB574B000CD944 /* LaunchScreen.storyboard */; };
 		C172682923EB587E000CD944 /* NYTTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C172682823EB587E000CD944 /* NYTTabBarController.swift */; };
+		C60ACC5023FBA66D00D51955 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60ACC4F23FBA66D00D51955 /* EmptyView.swift */; };
 		C6400EF323F7040D00FE38F1 /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6400EF223F7040D00FE38F1 /* ShowAlert.swift */; };
 		C6400EF623F7045E00FE38F1 /* CustomDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6400EF523F7045E00FE38F1 /* CustomDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -67,6 +68,7 @@
 		C172681B23EB574B000CD944 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C172681D23EB574B000CD944 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C172682823EB587E000CD944 /* NYTTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTTabBarController.swift; sourceTree = "<group>"; };
+		C60ACC4F23FBA66D00D51955 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		C6400EF223F7040D00FE38F1 /* ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlert.swift; sourceTree = "<group>"; };
 		C6400EF523F7045E00FE38F1 /* CustomDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,6 +178,7 @@
 				C102CD6723EB5997000C389B /* FavoritesView.swift */,
 				C102CD6923EB59A9000C389B /* BookDetailView.swift */,
 				C102CD6B23EB59B6000C389B /* SettingsView.swift */,
+				C60ACC4F23FBA66D00D51955 /* EmptyView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				C102CD7A23EB5AFA000C389B /* NYTBook.swift in Sources */,
 				C6400EF323F7040D00FE38F1 /* ShowAlert.swift in Sources */,
 				C102CD6E23EB59E5000C389B /* BookDetailViewController.swift in Sources */,
+				C60ACC5023FBA66D00D51955 /* EmptyView.swift in Sources */,
 				C172682923EB587E000CD944 /* NYTTabBarController.swift in Sources */,
 				C102CD6623EB5980000C389B /* NYTBestSellersView.swift in Sources */,
 				C102CD6A23EB59A9000C389B /* BookDetailView.swift in Sources */,

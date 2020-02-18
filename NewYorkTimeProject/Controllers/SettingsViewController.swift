@@ -8,7 +8,6 @@
 
 import UIKit
 
-//TODO: refactor to tab bar later
 public enum UserPreferenceKey: String {
     case selectedCatergory = "Category"
     case updateSelectedRow = "Selected Row"

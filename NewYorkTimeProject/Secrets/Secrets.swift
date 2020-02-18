@@ -9,5 +9,5 @@
 import Foundation
 
 struct NYTAPIKey {
-    static let nytKey = "Ovsxkbw42JVGM2020cL1GnGrjc9WYhso"
+    static let nytKey = "76ORceh0t6sDGS42cNly8O9gekLiZ0ID"
 }

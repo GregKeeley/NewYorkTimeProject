@@ -40,6 +40,7 @@ class BookDetailViewController: UIViewController {
         super.viewDidLoad()
         configureNavBar()
         updateUI()
+        configureButtons()
     }
     
     private func updateUI() {
@@ -72,17 +73,21 @@ class BookDetailViewController: UIViewController {
     }
     
     @objc private func favoritesButtonPressed(_ sender: UIBarButtonItem){
-        sender.image = UIImage(systemName: "heart.fill")
-        
-//        showAlert(title: "♥️", message: "\(book?.title ?? "test") was added to your favorites")
-        delegate?.didSaveBook(book: book)
-        
-        do {
-            try dataPersistence.createItem(book)
-            showAlert(title: "♥️", message: "\(book?.title ?? "test") was added to your favorites")
-        } catch {
-            showAlert(title: "Oops", message: "could not save to your favorites \(error)")
+        if dataPersistence.hasItemBeenSaved(book) {
+            sender.image = UIImage(systemName: "heart.fill")
+            showAlert(title: "You have already added this book to your collection", message: "")
+        } else {
+            delegate?.didSaveBook(book: book)
+            
+            do {
+                try dataPersistence.createItem(book)
+                showAlert(title: "♥️", message: "\(book?.title ?? "test") was added to your favorites")
+            } catch {
+                showAlert(title: "Oops", message: "could not save to your favorites \(error)")
+            }
+
         }
+
     }
     
     @objc private func amazonButtonPressed(_ sender: UIButton) {

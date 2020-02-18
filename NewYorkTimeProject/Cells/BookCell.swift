@@ -9,21 +9,25 @@
 import UIKit
 
 class BookCell: UICollectionViewCell {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.clipsToBounds = true
+        self.layer.cornerRadius = 13
+      }
     
     public lazy var bookImageView: UIImageView =    {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.image = UIImage(systemName: "book.fill")
-        imageView.backgroundColor = .systemRed
         return imageView
     }()
     
     public lazy var noOfWeeksLavel: UILabel =   {
         let label = UILabel()
         label.textAlignment = .center
-        label.backgroundColor = .systemGray
+        label.backgroundColor = .clear
         label.font = .boldSystemFont(ofSize: 17)
-        label.numberOfLines = 1
+        label.numberOfLines = 2
         return label
     }()
     
@@ -33,7 +37,7 @@ class BookCell: UICollectionViewCell {
         textView.textAlignment = .center
         textView.numberOfLines = 0
         textView.adjustsFontSizeToFitWidth = true
-        textView.backgroundColor = .systemPink
+        textView.backgroundColor = .clear
         return textView
     }()
     
