@@ -18,6 +18,7 @@ class SettingsView: UIView {
     public lazy var settingsLabel: UILabel = {
        let label = UILabel()
         label.textAlignment = .center
+        label.textColor = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 20)
         label.text = "settings"
@@ -55,7 +56,7 @@ class SettingsView: UIView {
         addSubview(settingsLabel)
         settingsLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            settingsLabel.topAnchor.constraint(equalTo: picker.topAnchor, constant: -20),
+            settingsLabel.topAnchor.constraint(equalTo: picker.topAnchor, constant: -50),
             settingsLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
             settingsLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8)
         ])
