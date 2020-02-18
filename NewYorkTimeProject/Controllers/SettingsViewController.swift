@@ -71,6 +71,7 @@ extension SettingsViewController: UIPickerViewDelegate {
         selectedCategory = selected
         UserDefaults.standard.set(row, forKey: UserPreferenceKey.updateSelectedRow.rawValue)
     }
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return bookCategories[row]
     }

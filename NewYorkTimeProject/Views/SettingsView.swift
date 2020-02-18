@@ -45,8 +45,9 @@ class SettingsView: UIView {
         commonInit()
     }
     private func commonInit() {
-        settingsLabelConstraints()
+        
         pickerConstraints()
+        settingsLabelConstraints()
         buttonConstraints()
     }
     
@@ -54,7 +55,7 @@ class SettingsView: UIView {
         addSubview(settingsLabel)
         settingsLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            settingsLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
+            settingsLabel.topAnchor.constraint(equalTo: picker.topAnchor, constant: -20),
             settingsLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
             settingsLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8)
         ])
