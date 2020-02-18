@@ -14,6 +14,7 @@ class BookCell: UICollectionViewCell {
       self.clipsToBounds = true
       self.layer.cornerRadius = 13
     }
+    
     public lazy var bookImageView: UIImageView =    {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -22,6 +23,14 @@ class BookCell: UICollectionViewCell {
         return imageView
     }()
     
+    public lazy var num1Image: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "Num1Ribbon")
+        imageView.backgroundColor = nil
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+
     public lazy var noOfWeeksLavel: UILabel =   {
         let label = UILabel()
         label.textAlignment = .center
@@ -68,10 +77,28 @@ class BookCell: UICollectionViewCell {
     }
     
     private func commonInit() {
+        
+        setupNum1ImageViewConstraints()
         setupBookImageViewConstraints()
         setupNoOfWeeksLabel()
         setupDescriptionTextViewConstraints()
+        
+        
     }
+    
+    private func setupNum1ImageViewConstraints() {
+        addSubview(num1Image)
+        num1Image.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            num1Image.topAnchor.constraint(equalTo: topAnchor),
+            num1Image.leadingAnchor.constraint(equalTo: leadingAnchor),
+            num1Image.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            num1Image.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.25),
+            num1Image.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.3)
+        ])
+    }
+
         
     private func setupBookImageViewConstraints()   {
         
@@ -79,14 +106,17 @@ class BookCell: UICollectionViewCell {
         bookImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             
-            bookImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            bookImageView.topAnchor.constraint(equalTo: num1Image.topAnchor, constant: 8),
             bookImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             bookImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
-            bookImageView.widthAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3)
+            bookImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.3)
         ])
         
     }
     
+    
+    
+        
     private func setupNoOfWeeksLabel()  {
         addSubview(noOfWeeksLavel)
         noOfWeeksLavel.translatesAutoresizingMaskIntoConstraints = false

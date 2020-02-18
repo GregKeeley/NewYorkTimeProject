@@ -12,10 +12,13 @@ import DataPersistence
 class NYTBestSellersViewController: UIViewController {
     
     private var dataPersistence: DataPersistence<Books>
-        
+    
     var defaultSelection: String = "manga"
     
     let bestsellerView = NYTBestSellersView()
+    
+    private var num1Image = UIImage(named: "Num1Ribbon")
+    
     
     var bookCategories = [String](){
         didSet{
@@ -60,14 +63,14 @@ class NYTBestSellersViewController: UIViewController {
         navigationItem.title = "NYT Bestseller"
     }
     
-        override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(true)
-            getCategory()
-            if let currentRow = UserDefaults.standard.object(forKey: UserPreferenceKey.updateSelectedRow.rawValue)  {
-                bestsellerView.genrePickerView.selectRow(currentRow as! Int, inComponent: 0, animated: false)
-            }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        getCategory()
+        if let currentRow = UserDefaults.standard.object(forKey: UserPreferenceKey.updateSelectedRow.rawValue)  {
+            bestsellerView.genrePickerView.selectRow(currentRow as! Int, inComponent: 0, animated: false)
         }
-        
+    }
+    
     private func loadPickerView()   {
         NYTAPIClient.getCategories { [weak self] (result) in
             switch result {
@@ -119,6 +122,7 @@ extension NYTBestSellersViewController: UICollectionViewDataSource  {
         let book = books[indexPath.row]
         cell.configureCell(for: book)
         if book.rank == 1 {
+            cell.num1Image.image = num1Image
             cell.backgroundColor = .yellow
         } else {
             cell.backgroundColor = .white
