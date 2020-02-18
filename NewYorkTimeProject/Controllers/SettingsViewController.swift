@@ -53,8 +53,16 @@ class SettingsViewController: UIViewController {
     @objc func settingButtonPressed(_ sender: UIButton) {
         UserDefaults.standard.set(selectedCategory, forKey: UserPreferenceKey.selectedCatergory.rawValue)
         settingsView.settingsLabel.text = "Your Default Category: \n\(selectedCategory ?? "")"
+        buttonAnimation()
     }
     
+    private func buttonAnimation() {
+        UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: [], animations: {
+            self.settingsView.settingsButton.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        }) { (done) in
+            self.settingsView.settingsButton.transform = CGAffineTransform.identity
+        }
+    }
 
 }
 extension SettingsViewController: UIPickerViewDelegate {
