@@ -46,7 +46,6 @@ class FavoritesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//      view = favoriteBooksView
         favoriteBooksView.collectionView.dataSource = self
         favoriteBooksView.collectionView.delegate = self
         favoriteBooksView.collectionView.register(FavoriteCell.self, forCellWithReuseIdentifier: "favCell")
@@ -58,12 +57,11 @@ class FavoritesViewController: UIViewController {
         dump(favoriteBook)
     }
     
-    
     private func fetchFavBook() {
         do {
             favoriteBook = try dataPersistance.loadItems()
         } catch {
-            showAlert(title: "ERROR", message: "Can't Load Books")
+            showAlert(title: "ERROR", message: "Can't Load Books \(error)")
         }
     }
 }
@@ -92,12 +90,6 @@ extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let maxSize: CGSize = UIScreen.main.bounds.size
-//        let spacingBetweenItems: CGFloat = 10
-//        let numberOfItems: CGFloat = 2
-//        let itemHeight: CGFloat = maxSize.height * 0.30
-//        let totalSpacing: CGFloat = (2 * spacingBetweenItems) + (numberOfItems - 1) * spacingBetweenItems
-//        let itemWidth: CGFloat = (maxSize.width - totalSpacing) / numberOfItems
-//        return CGSize(width: itemWidth, height: itemHeight)
         return CGSize(width: (maxSize.width * 0.95), height: (maxSize.height * 0.50))
     }
     
@@ -133,7 +125,7 @@ extension FavoritesViewController: FavoriteBookDelegate {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         // cancel action
-        let cancelAction = UIAlertAction(title: "Canel", style: .cancel)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertController.addAction(cancelAction)
 
         // delete action
@@ -147,15 +139,15 @@ extension FavoritesViewController: FavoriteBookDelegate {
         
     }
     
-    private func deleteBook(_ article: Books) {
-        guard let index = favoriteBook.firstIndex(of: article) else {
+    private func deleteBook(_ book: Books) {
+        guard let index = favoriteBook.firstIndex(of: book) else {
             return
         }
         do {
             try dataPersistance.deleteItem(at: index)
+            showAlert(title: "Deleted", message: "\(book.title) was successfully removed from your favorites")
         } catch {
-            showAlert(title: "ERROR", message: "Could not delete \(favoriteBook.description)")
-          print("error\(error)")
+            showAlert(title: "ERROR", message: "Could not delete error: \(error)")
         }
     }
 }

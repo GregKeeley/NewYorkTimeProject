@@ -28,6 +28,7 @@ class FavoriteCell: UICollectionViewCell {
         button.setBackgroundImage(.actions, for: .normal)
         button.tintColor = .black
         button.backgroundColor = .white
+        button.addTarget(self, action: #selector(optionsButtonPressed(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -69,6 +70,9 @@ class FavoriteCell: UICollectionViewCell {
         descriptionLabelConstraints()
     }
     
+    @objc func optionsButtonPressed(_ sender: UIButton) {
+        delegate?.didSelectMoreButton(self, book: currentFav)
+    }
     
     private func optionButtonConstraints() {
         addSubview(optionButton)
