@@ -52,7 +52,7 @@ class BookDetailView: UIView {
     }()
     public lazy var amazonButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "amazon"), for: .normal)
+        button.setImage(UIImage(named: "amazon-button"), for: .normal)
         return button
     }()
     public lazy var appleBooksButton: UIButton = {
@@ -62,12 +62,12 @@ class BookDetailView: UIView {
     }()
     public lazy var barnesNobelButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "barnes&Nobel"), for: .normal)
+        button.setImage(UIImage(named: "barnes-and-noble-button"), for: .normal)
         return button
     }()
     public lazy var localStoreButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "bookStore"), for: .normal)
+        button.setImage(UIImage(named: "local-bookstore-button"), for: .normal)
         return button
     }()
     
@@ -112,6 +112,7 @@ class BookDetailView: UIView {
             buyButtonStack.heightAnchor.constraint(equalTo: bookImage.heightAnchor)
         ])
     }
+    
     private func titleLabelConstraints() {
         addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -142,5 +143,6 @@ class BookDetailView: UIView {
             descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10)
         ])
     }
+    
 }
 
