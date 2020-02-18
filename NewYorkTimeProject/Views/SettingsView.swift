@@ -18,6 +18,7 @@ class SettingsView: UIView {
     public lazy var settingsLabel: UILabel = {
        let label = UILabel()
         label.textAlignment = .center
+        label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 20)
         label.text = "settings"
         return label

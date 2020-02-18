@@ -52,7 +52,7 @@ class SettingsViewController: UIViewController {
     
     @objc func settingButtonPressed(_ sender: UIButton) {
         UserDefaults.standard.set(selectedCategory, forKey: UserPreferenceKey.selectedCatergory.rawValue)
-        settingsView.settingsLabel.text = "Your Default Category: \(selectedCategory ?? "")"
+        settingsView.settingsLabel.text = "Your Default Category: \n\(selectedCategory ?? "")"
     }
     
 
