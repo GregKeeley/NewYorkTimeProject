@@ -53,9 +53,12 @@ class FavoritesViewController: UIViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
+         navigationController?.setNavigationBarHidden(true, animated: animated)
         fetchFavBook()
     }
-    
+    override func viewWillDisappear(_ animated: Bool) {
+         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
     
     private func fetchFavBook() {
         do {

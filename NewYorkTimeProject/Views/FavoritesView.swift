@@ -9,8 +9,6 @@ import UIKit
 
 class FavoritesView: UIView {
     
-//    weak var delegate: FavoritesDelegate?
-    
     public lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize.init(width: 250, height: 250)
@@ -21,20 +19,15 @@ class FavoritesView: UIView {
         return collectionView
     }()
     
-    
     override init(frame: CGRect) {
         super .init(frame: UIScreen.main.bounds)
         commonInit()
     }
     
-    
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
-    
-    
     
     private func commonInit(){
         backgroundColor = .systemBackground
@@ -42,22 +35,14 @@ class FavoritesView: UIView {
     }
     
     func collectionViewConstraints(){
-        
         addSubview(collectionView)
-        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor)
-//            collectionView.centerXAnchor.constraint(equalTo: centerXAnchor),
-//            collectionView.centerYAnchor.constraint(equalTo: centerYAnchor),
-//            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-//            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8)
         ])
-        
     }
 }
 
