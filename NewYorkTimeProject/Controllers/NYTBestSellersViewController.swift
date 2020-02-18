@@ -117,12 +117,12 @@ extension NYTBestSellersViewController: UICollectionViewDataSource  {
             fatalError("could not cast to cell")
         }
         let book = books[indexPath.row]
+        cell.configureCell(for: book)
         if book.rank == 1 {
             cell.backgroundColor = .yellow
         } else {
-            cell.backgroundColor = #colorLiteral(red: 0.7739111781, green: 1, blue: 0.8726517558, alpha: 1)
+            cell.backgroundColor = .white
         }
-        cell.configureCell(for: book)
         return cell
     }
     

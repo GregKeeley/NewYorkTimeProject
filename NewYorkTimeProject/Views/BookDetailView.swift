@@ -11,7 +11,7 @@ import UIKit
 class BookDetailView: UIView {
     
     private var currentBook: Books?
-    
+        
     public lazy var bookImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -45,7 +45,9 @@ class BookDetailView: UIView {
         let stack = UIStackView(arrangedSubviews: [amazonButton, appleBooksButton, barnesNobelButton, localStoreButton])
         stack.axis = .vertical
         stack.distribution = .fillEqually
+        stack.alignment = .fill
         stack.spacing = 5
+        stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     public lazy var amazonButton: UIButton = {
@@ -85,29 +87,29 @@ class BookDetailView: UIView {
         authorLabelConstraints()
         descriptionLabelConstraints()
     }
-    
+
     private func bookImageConstraints() {
         addSubview(bookImage)
         bookImage.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            bookImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            bookImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            bookImage.widthAnchor.constraint(equalToConstant: 100),
-            bookImage.heightAnchor.constraint(equalToConstant: 300)
+            bookImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0),
+            bookImage.centerXAnchor.constraint(equalTo: centerXAnchor),
+            bookImage.widthAnchor.constraint(equalToConstant: 200),
+            bookImage.heightAnchor.constraint(equalTo: bookImage.widthAnchor)
             
         ])
     }
     private func buttonStackConstraints() {
         addSubview(buyButtonStack)
         buyButtonStack.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             buyButtonStack.topAnchor.constraint(equalTo: bookImage.topAnchor),
             buyButtonStack.leadingAnchor.constraint(equalTo: bookImage.trailingAnchor, constant: 0),
             buyButtonStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-            buyButtonStack.heightAnchor.constraint(equalTo: bookImage.heightAnchor),
-            buyButtonStack.widthAnchor.constraint(equalToConstant: 60)
+            buyButtonStack.widthAnchor.constraint(equalToConstant: 70),
+            buyButtonStack.heightAnchor.constraint(equalTo: bookImage.heightAnchor)
         ])
     }
     private func titleLabelConstraints() {

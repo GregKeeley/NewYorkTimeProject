@@ -18,12 +18,18 @@ class FavoriteCell: UICollectionViewCell {
     
     weak var delegate: FavoriteBookDelegate?
     
-    lazy var bookImage: UIImageView = {
+    override func layoutSubviews() {
+      super.layoutSubviews()
+      self.clipsToBounds = true
+      self.layer.cornerRadius = 13
+    }
+    
+    public lazy var bookImage: UIImageView = {
         let image = UIImageView()
         return image
     }()
     
-    lazy var optionButton: UIButton = {
+    public lazy var optionButton: UIButton = {
         let button = UIButton()
         button.setBackgroundImage(.actions, for: .normal)
         button.tintColor = .black
@@ -54,7 +60,7 @@ class FavoriteCell: UICollectionViewCell {
     }()
     
     override init(frame: CGRect) {
-        super .init(frame: UIScreen.main.bounds)
+        super.init(frame: UIScreen.main.bounds)
         commonInit()
     }
     
@@ -90,10 +96,15 @@ class FavoriteCell: UICollectionViewCell {
         bookImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             
-            bookImage.centerXAnchor.constraint(equalTo: centerXAnchor),
             bookImage.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            bookImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
-            bookImage.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5)
+            bookImage.centerXAnchor.constraint(equalTo: centerXAnchor),
+            bookImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4),
+            bookImage.widthAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3)
+            // Original
+            //            bookImage.centerXAnchor.constraint(equalTo: centerXAnchor),
+            //            bookImage.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            //            bookImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
+            //            bookImage.widthAnchor.constraint(equalToConstant: (bookImage.image?.size.width ?? 1) * 0.5)
 
         ])
     }
@@ -151,4 +162,5 @@ class FavoriteCell: UICollectionViewCell {
             }
         }
     }
+    
 }

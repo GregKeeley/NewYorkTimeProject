@@ -22,7 +22,7 @@ class FavoritesViewController: UIViewController {
         didSet {
             favoriteBooksView.collectionView.reloadData()
             if favoriteBook.isEmpty {
-                favoriteBooksView.collectionView.backgroundView = nil // ADD EMPTY FILE
+                favoriteBooksView.collectionView.backgroundView = EmptyView.init(title: "Collection Empty", message: "There are currently no saved books")
             } else {
                 favoriteBooksView.collectionView.reloadData()
                 favoriteBooksView.collectionView.backgroundView = nil
@@ -54,7 +54,6 @@ class FavoritesViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         fetchFavBook()
-        dump(favoriteBook)
     }
     
     private func fetchFavBook() {
@@ -145,9 +144,9 @@ extension FavoritesViewController: FavoriteBookDelegate {
         }
         do {
             try dataPersistance.deleteItem(at: index)
-            showAlert(title: "Deleted", message: "\(book.title) was successfully removed from your favorites")
+            showAlert(title: "Deleted", message: "successfully deleted \(book.title) from your collection")
         } catch {
-            showAlert(title: "ERROR", message: "Could not delete error: \(error)")
+            showAlert(title: "ERROR", message: "Could not delete \(book.title)")
         }
     }
 }
