@@ -62,7 +62,7 @@ class FavoritesViewController: UIViewController {
     
     private func fetchFavBook() {
         do {
-            favoriteBook = try dataPersistance.loadItems()
+            favoriteBook = try dataPersistance.loadItems().reversed()
         } catch {
             showAlert(title: "ERROR", message: "Can't Load Books")
         }

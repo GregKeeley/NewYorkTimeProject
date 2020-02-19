@@ -16,15 +16,19 @@ class NYTBestSellersViewController: UIViewController {
     var defaultSelection: String = "manga"
     
     let bestsellerView = NYTBestSellersView()
-    
+        
     private var num1Image = UIImage(named: "Num1Ribbon")
     
     
     var bookCategories = [String](){
         didSet{
+            getCategory()
             DispatchQueue.main.async {
                 self.bestsellerView.genrePickerView.reloadAllComponents()
-                self.bestsellerView.genrePickerView.selectRow(14, inComponent: 0, animated: false)
+                if let currentRow = UserDefaults.standard.object(forKey: UserPreferenceKey.updateSelectedRow.rawValue)  {
+                    self.bestsellerView.genrePickerView.selectRow(currentRow as! Int, inComponent: 0, animated: false)
+                }
+                else {self.bestsellerView.genrePickerView.selectRow(14, inComponent: 0, animated: false)}
             }
         }
     }
@@ -58,17 +62,9 @@ class NYTBestSellersViewController: UIViewController {
         bestsellerView.bestSellerCollectionView.delegate = self
         bestsellerView.genrePickerView.dataSource = self
         bestsellerView.genrePickerView.delegate = self
-        loadBooks(category: "manga")
+        loadBooks(category: defaultSelection)
         bestsellerView.bestSellerCollectionView.register(BookCell.self, forCellWithReuseIdentifier: "bookCell")
         navigationItem.title = "NYT Bestseller"
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        getCategory()
-        if let currentRow = UserDefaults.standard.object(forKey: UserPreferenceKey.updateSelectedRow.rawValue)  {
-            bestsellerView.genrePickerView.selectRow(currentRow as! Int, inComponent: 0, animated: false)
-        }
     }
     
     private func loadPickerView()   {
@@ -172,5 +168,3 @@ extension NYTBestSellersViewController: UIPickerViewDelegate    {
         return bookCategories[row]
     }
 }
-
-
